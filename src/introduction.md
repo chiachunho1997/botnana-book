@@ -1,54 +1,25 @@
 # 簡介
 
-霸娜娜控制器 (Botnana Control) 是一款工業以太網 EtherCAT 控制器的快速開發以及學習環境。目標是幫使用者快速開發工業以太網 EtherCAT 的自動控制以及工業物聯網應用。
+霸蕉控制器 (Botnana Control) 是一款工業以太網 EtherCAT 控制器的快速開發以及學習環境。目標是幫使用者快速開發工業以太網 EtherCAT 的自動控制以及工業物聯網應用。
 
-霸娜娜控制器能掃描和 Botnana A2 板連結的 EtherCAT 裝置，並在一張試算表出呈現裝置中的資料。資料被分類為輸入 (X 點)、輸出 (Y 點)、參數 (P 點)、狀態 (S 點)。X 點和 Y 點對應 EtherCAT 裝置中被映射的 PDO。P 點和 S 點則對應 EtherCAT 裝置中被㬇射的 SDO。每個資料點的型別可能是布林值 (bool)、8 位元無號數／有號數 (u8, i8)、16 位元無號數／有號數 (u16, i16)、32 位元無號數／有號數 (u32, i32)。
 
-霸娜娜控制器會自動配給每一個 X、Y、P、S 點一個編號。使用者可以在試算表中看出各個資料點的名稱、所屬的裝置、在此裝置中的索引 (index) 、子索引 (subindex) 以及各資料點的型別、
 
-霸娜娜控制器提供幾張試算表幫助使用者瞭解他的系統：
+![霸焦控制器](./botnana-a2-in-box.png)
 
-* 系統掃掃與建構試算表：顯示系統中連結的裝置 (Device)，包括裝置的位置、製造商的名稱或代碼、產品的品名或代碼，以及版本號碼。同時，也顯示系統提供的控制器 (Control)。基本款的霸娜娜控制器提供一個簡單的類 PLC 控制環境，可以用來控制 I/O 點以及執行回歸原點及點到點的運動。
+## 硬體規格
 
-* 系統監控試算表：顯示各裝置的資料點的名稱以及內容。裝置依次序由上而下排列。而裝置的內容則依情況從上而下或是從左而右排列。當資料多時，使用者可以依需要隱藏或展開每個裝置的資料點。或選擇要顯示的資料點。
+目前霸蕉控制器 (Botnana Control) 支援霸蕉 A2 (Botnana A2)。霸蕉 A2 規格如下：
 
-除了試算表示，霸娜娜控制器亦提供了一個撰寫程式的畫面，在此畫面上可以編輯、執行程式。第一版只提供一個類似 Lisp 的 Botnana 程式語言。此一程式語言可以很容易地表達 PLC 階梯圖的語法。也可以寫出比階梯圖還要複雜的程式。
-
-以下為幾個程式例子：
-
-    |---|X1|---[T10]---(Y1)---|
-
-    (ld! x2 t10 (out! y1))
-
-    |---|x1|-+-|x2|-+-(Y2)---|
-             |      |
-             +-|x4|-+
-
-    (ld! x1 (orb x2 x4) (out! y2))
-
-    |---|X1|-+-|X2|-+-|X3|---|X4|-+-(Y3)---|
-    |        |      |             |
-    |---|X5|-+      +-|X6|---|X7|-+
-
-    (ld! (orb x1 x5) x2 (orb (anb x3 x4) (anb x6 x7)) (out! y3)) 或是
-    (ld! (orb x1 x5)
-         x2
-         (orb (anb x3 x4)
-              (anb x6 x7))
-         (out! y3))
-
-Botnana 語言更能結合軸控，快速寫出回歸原點或點到點的程式，而且這些程式可以和類似階梯圖的程式寫在一起，例如以上 Y3 輸出的上升邊緣時第一軸要回歸原點，而且回歸原點後要移動到 10.0mm 的位置：
-
-    (ld! (orb x1 x5) x2 (orb (anb x3 x4) (anb x6 x7)) (out! y3))
-    (ld! (if (rising-edge y3)
-             (home 1)))
-    (ld! (if (rising-edge (homed 1))
-             (pp 1 10.0)))
-
-其中的 `home` 要求霸娜娜控制器回歸原點，`homed` 則是取得是否已經回歸原點的狀態。
-
-未來的版本會在這個基礎上提供階梯圖以及 IL 語言。不過 Botnana 語言未來能提供遠比階梯圖和 IL 語言更強大的功能，幫助使用者快速開發他原本難以使用階梯圖實現的應用。
-
-除了系統自動產生的「系統掃描與建構試算表」以及「系統監控試算表」，霸娜娜控制器還允許使用者自行建立自己的試算表，甚至設計個人風格的畫面。使用者可以使用霸娜娜控制器提供的應用畫面，填入系統試算表出資料點的座標，就可以得到一個新的畫面。使用者也可以使用網頁語言 (HTML) 來描述畫面，填入系統試算表中資料點的座標，將網頁上傳至霸娜娜控制器。就可以得到屬於自己風格的畫面。使用者也使用 CSS 語言描述畫面的顏色、字形大小、上傳 CSS 以改變霸娜娜控制器的顏色、字型和大小。
-
-霸娜娜控制器能帶給使用者新的，不同於過去 PLC 或 CNC 控制器的快速開發體驗，輕鬆完成各種自動控制以及工業物聯網的專案。
+* AM3357 800MHz ARM Cortex A8
+* 512MB DDR3L@400MHz RAM
+* 4GB 8-bit eMMC on-board flash storage
+* 1x microSD
+* NEON floating-point accelerator
+* 1x micro USB 2.0 client (USB0) for power and communication
+* 1x USB 2.0 host (USB1), TYPE A socket
+* 2x Ethernet 10/100MHz
+* 40-pin connector comaptible with Raspberry Pi Model B+’s 40-pin connector
+* 26-pin connector to supply daugtherboard with 12/24 volts power
+* 34 GPIOs which cannot provide 2 x SPI, 3 x I2C, 2 x CAN, 4 x Timers, 2 x eQEP, PWMs, 2 x eCAP, 4 x UARTs
+* 7 Analog inputs
+* Selection of EtherCAT master mode and EtherCAT slave mode through installed software
