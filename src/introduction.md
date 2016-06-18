@@ -20,6 +20,6 @@
 * 2x Ethernet 10/100MHz
 * 40-pin connector comaptible with Raspberry Pi Model B+’s 40-pin connector
 * 26-pin connector to supply daugtherboard with 12/24 volts power
-* 34 GPIOs which cannot provide 2 x SPI, 3 x I2C, 2 x CAN, 4 x Timers, 2 x eQEP, PWMs, 2 x eCAP, 4 x UARTs
+* 34 GPIOs which provides 2 x SPI, 3 x I2C, 2 x CAN, 4 x Timers, 2 x eQEP, PWMs, 2 x eCAP, 4 x UARTs
 * 7 Analog inputs
 * Selection of EtherCAT master mode and EtherCAT slave mode through installed software

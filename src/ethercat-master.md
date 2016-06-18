@@ -12,7 +12,7 @@
 
 ### 基本軸控、監控
 
-* 系統掃掃與建構軟體，自動偵測 EtherCAT 從站。
+* 系統掃描與建構軟體，自動偵測 EtherCAT 從站。
 * 軸控及監控軟體。支援 EtherCAT 馬達驅動器的 hm 及 pp 模式，可進行原點回歸及點到點運動。
 * 非同動軸可達 1-32 軸以上。
 * 支援 Panasonic、Yaskawa、Sanyo Denki, Coply 及 Delta 的 EtherCAT 馬達驅動器。
