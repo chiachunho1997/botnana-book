@@ -1,25 +1,15 @@
 # 簡介
 
-霸蕉控制器 (Botnana Control) 是一款工業以太網 EtherCAT 控制器的快速開發以及學習環境。目標是幫使用者快速開發工業以太網 EtherCAT 的自動控制以及工業物聯網應用。
-
-
+霸蕉控制器 (Botnana Control) 是一款工業以太網 EtherCAT 控制器的快速開發以及學習環境。目標是幫使用者快速開發以工業以太網 EtherCAT 為基礎的自動控制以及工業物聯網應用。
 
 ![霸焦控制器](./botnana-a2-in-box.png)
 
-## 硬體規格
+## 應用領域
 
-目前霸蕉控制器 (Botnana Control) 支援霸蕉 A2 (Botnana A2)。霸蕉 A2 規格如下：
+霸蕉控制器軟體適合以下應用
 
-* AM3357 800MHz ARM Cortex A8
-* 512MB DDR3L@400MHz RAM
-* 4GB 8-bit eMMC on-board flash storage
-* 1x microSD
-* NEON floating-point accelerator
-* 1x micro USB 2.0 client (USB0) for power and communication
-* 1x USB 2.0 host (USB1), TYPE A socket
-* 2x Ethernet 10/100MHz
-* 40-pin connector comaptible with Raspberry Pi Model B+’s 40-pin connector
-* 26-pin connector to supply daugtherboard with 12/24 volts power
-* 34 GPIOs which provides 2 x SPI, 3 x I2C, 2 x CAN, 4 x Timers, 2 x eQEP, PWMs, 2 x eCAP, 4 x UARTs
-* 7 Analog inputs
-* Selection of EtherCAT master mode and EtherCAT slave mode through installed software
+* 資料收集：做為 Remote Control Unit (RTU) 使用。
+* 資料分析：透過內建類似試算表的工具及其語言 Javascript，分析收集到的資料。
+* 軸控：可透過 EtherCAT 控制 1-32 軸以上的馬達。目前已支援台達電、Panasonic 的 EtherCAT 馬達驅動器，未來將支援 Coply、Sanyo Denki 以及 Yaskawa EtherCAT 的驅動器，以及接收脈波輸入的驅動器。
+* 類 PLC 控制：可透過 EtherCAT IO 模組進行類似 PLC 的控制，目前支援台達電及 Beckhoff 的 IO 模組。
+* 雲端及使用者 HMI 整合：透過內建的 websocket 伺服器，和客戶的雲端服務或 HMI 整合。

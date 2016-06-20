@@ -1,15 +1,5 @@
 # 霸蕉控制器軟體規格
 
-## 應用領域
-
-霸蕉控制器軟體適合以下應用
-
-* 資料收集，可做為 Remote Control Unit (RTU) 使用
-* 資料分析，透過內建類似試算表的工具及其語言 Javascript，可分析收集到的資料。
-* 軸控：可透過 EtherCAT 控制 1-32 軸以上的馬達。目前已支援台達電、Panasonic 的 EtherCAT 馬達驅動器，未來將支援 Coply、Sanyo Denki 以及 Yaskawa 的驅動器。並可依客戶需求增加新驅動器的支援。
-* 類 PLC 控制：可透過 EtherCAT IO 模組進行類似 PLC 的控制，目前支援台達電及 Beckhoff 的 IO 模組。可依客戶需求增加新模組的支援。
-* 雲端及使用者 HMI 整合：透過內建的 websocket 伺服器，可和客戶的雲端服務或 HMI 整合。
-
 ## 基本款霸蕉控制器 (Botnana Control Base)
 
 霸蕉控制器軟體能掃描和硬體連結的 EtherCAT 裝置，並在一張試算表出呈現裝置中的資料。資料被分類為輸入 (X 點)、輸出 (Y 點)、參數 (P 點)、狀態 (S 點)。X 點和 Y 點對應 EtherCAT 裝置中被映射的 PDO。P 點和 S 點則對應 EtherCAT 裝置中被㬇射的 SDO。每個資料點的型別可能是布林值 (bool)、8 位元無號數／有號數 (u8, i8)、16 位元無號數／有號數 (u16, i16)、32 位元無號數／有號數 (u32, i32)。
