@@ -1,18 +1,24 @@
 # 軟體規格
 
-霸蕉控制器由以下軟體構成：
+霸蕉控制器出廠時預裝以下開源軟體，
 
 * Debian Linux
 * IgH EtherCAT Master for Linux
-* Botnana Control: 針對 EtherCAT 以及工業物聯網運用開發的多軸控制軟體。
+* nodejs
+
+以及動程科技自行開發的
+
+* Botnana Control P2P: 針對 EtherCAT 以及工業物聯網運用開發的多軸控制軟體。
 
 ## 軸控軟體
 
-軸控軟體 Botnana Control 分三個個等級。所有等級的 Botnana Control 都支援以下規格：
+軸控軟體 Botnana Control 分三個等級。Botnana A2 出廠時預裝的是等級一的 Botnana Control P2P。
+
+所有等級的 Botnana Control 都支援以下規格：
 
 * EtherCAT 非同動軸可達 1-32 軸以上。
-* 支援 Panasonic、Yaskawa、Sanyo Denki, Coply 及 Delta 的 EtherCAT 馬達驅動器。
-* 支援 Beckhoff 及 Delta 的類比及數位輸出入模組。
+* 支援 Panasonic 及 Delta 的 EtherCAT 馬達驅動器，其他廠牌的驅動器正開發中。
+* 支援 Delta 的類比及數位輸出入模組。未來將支援 Beckhoff 及其他廠牌的 EtherCAT 模組。
 
 ### 等級一：Botnana Control P2P，點到點軸控、監控
 
