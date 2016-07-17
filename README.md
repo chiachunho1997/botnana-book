@@ -2,6 +2,5 @@
 
 ## Build
 
-    cargo install mdbook
-    mdbook build
-
+    npm install gitbook-cli -g
+    gitbook serve
