@@ -14,7 +14,7 @@ password: temppwd
 執行 EtherCAT master:
 
     /etc/init.d/ethercat start
-    
+
 執行 Botnana Control 的 Motion Server：
 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/etherlab/lib
@@ -23,3 +23,9 @@ password: temppwd
 執行 Botnana Control 的 Web Server：
 
     /opt/mapacode/botnana-control/bin/hmi
+
+### Configuration
+
+建構檔位於 `/opt/mapacode/botnana-control/config/motion.toml`
+
+請參考 [建構檔](./configuration-file.md) 章節，若無必要，請勿手動修改建構檔。
