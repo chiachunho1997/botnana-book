@@ -1,6 +1,19 @@
 ## Botnana A2 入門
 
 --------------------
+### 登入
+
+使用 micro USB 連結到電腦的 USB port，再以 ssh 登入，
+
+    ssh 192.168.7.2
+
+使用者名稱為 debian，password 為 temppwd。
+
+如果有必要切換使用者為 root，可執行
+
+    sudo su
+
+--------------------
 ### 7 個類比輸入 (ADC)
 
 Botnana A2 在出廠時開放 AM3357 的七個類比輸入給使用者。若使用者有其他安排，可以參考 TI 的文件修改 Device tree。
@@ -27,7 +40,7 @@ Botnana A2 在出廠時開放 AM3357 的七個類比輸入給使用者。若使�
     drwxr-xr-x 2 root root    0 Mar 26 06:19 scan_elements
     lrwxrwxrwx 1 root root    0 Mar 26 06:19 subsystem -> ../../../../../bus/iio
     -rw-r--r-- 1 root root 4096 Mar 26 06:19 uevent
-    
+
 TI AM3357 的 ADC 支援單擊模式 (One-shot Mode) 及連續模式 (Continuous Mode)。Botnana A2 出廠的預設為單擊模式。使用以下命令取得單擊模式下的類比輸入值。
 
     debian@arm:~$ cat /sys/bus/iio/devices/iio\:device0/in_voltage4_raw
