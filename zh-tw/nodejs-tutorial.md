@@ -7,6 +7,11 @@ Botnana 使用 Javascript 做為其控制語言。執行環境則為 [NodeJS](ht
 * 性能：Google, Microsoft 和 Mozilla 在瀏覽器上的競爭，使得 Javascript 成為性能最優越的互動式程式語言。
 * 工業物聯網：NodeJS 使得 Javascript 成為唯一可在瀏覽器及伺服器執行的程式語言。也使得 Javascript 成為整合雲端及設備端的工業物聯網的當然選擇。
 
+如果你使用的是 Botnana A2 較早的，尚未安裝 nodejs 的版本，請連上網路後安裝 nodejs：
+
+    sudo apt-get update
+    sudo apt-get install nodejs nodejs-legacy
+
 執行 nodejs：
 
     debian@arm:~$ node
@@ -15,7 +20,7 @@ Botnana 使用 Javascript 做為其控制語言。執行環境則為 [NodeJS](ht
 按 `Ctrl-D` 可離開 nodejs 環境。
 
 以下 nodejs 程式取得並印出類比輸入 AIN0 的值。
-    
+
     var fs = require('fs');
 
     fs.readFile('/sys/bus/iio/devices/iio:device0/in_voltage0_raw', function (err, data) {
@@ -29,4 +34,3 @@ Botnana 使用 Javascript 做為其控制語言。執行環境則為 [NodeJS](ht
 
     debian@arm:~$ node test.js
     21
-
