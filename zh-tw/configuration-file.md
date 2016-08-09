@@ -1,12 +1,12 @@
 ## 建構檔
 
-Botnana Control 使用 [Toml](https://github.com/toml-lang/toml) 格式作為其建構檔。檔案名稱為_motion.toml_。Botnana Control 支援不止是 EtherCAT 及 CANOpen，也要支援 CNC 控制器本身的需求，因此未使用 EhterCAT 的 ESI 檔或 CANopen 的 EDS 檔。
+Botnana Control 使用 [Toml](https://github.com/toml-lang/toml) 格式作為其建構檔。檔案名稱為_motion.toml_。Botnana Control 支援不止是 EtherCAT 及 CANopen，也要支援 CNC 控制器本身的需求，因此未使用 EtherCAT 的 ESI 檔或 CANopen 的 EDS 檔。
 
-### [file] section
+### file section
 
 * _spec-version_ 欄位：列出使用的建構檔格式的版本，本文件目前的版本是 0.0.1。
 
-### [[device]] section
+### device section
 
 可以有多個 devices，因此使用 `[[device]]`。
 每個 device 有以下欄位。
@@ -28,7 +28,7 @@ Botnana Control 使用 [Toml](https://github.com/toml-lang/toml) 格式作為其
 * _homing-method_
 * _home-offset_
 * _homing-speed-1_
-* _homing_speed-2_
+* _homing-speed-2_
 * _homing-acceleration_
 * _profile-velocity_
 * _profile-acceleration_
