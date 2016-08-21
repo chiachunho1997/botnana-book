@@ -1,6 +1,8 @@
 ## 建構檔
 
-Botnana Control 使用 [Toml](https://github.com/toml-lang/toml) 格式作為其建構檔。檔案名稱為 _motion.toml_。Botnana Control 的建構檔不止需要支 EtherCAT 及 CANopen，也要支援 CNC 控制器本身的需求，因此未使用 EtherCAT 的 ESI 檔或 CANopen 的 EDS 檔。
+Botnana Control Motion Server 的建構檔位於 /opt/mapacode/botnana-control/config/motion.toml 。
+
+建構檔使用 [Toml](https://github.com/toml-lang/toml) 格式。說明如下。
 
 ### file section
 
