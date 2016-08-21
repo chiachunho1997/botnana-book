@@ -23,9 +23,17 @@ IgH EtherCAT Master 被安裝在 `/opt/etherlab` 目錄下。
 
 以下是幾個基本操作：
 
-    /etc/init.d/ethercat start
-    /etc/init.d/ethercat status
-    /etc/init.d/ethercat stop
+    service ethercat start
+    service ethercat status
+    service ethercat stop
+
+如果希望每次開機時會自動執行 EtherCAT master:
+
+    update-rc.d ethercat defaults
+
+若不希望自動執行：
+
+    update-rc.d ethercat remove
 
 ### 檢查 EtherCAT master 及 slaves 的狀態
 

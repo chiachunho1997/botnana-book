@@ -4,25 +4,13 @@ Botnana A2 預設於開機時自動啟動動程科技的 Botnana Control P2P 軸
 
 因此，使用瀏覽器連上 http://192.168.7.2:3000 。可見到以下畫面。
 
+如果 Botnana A2 上未安裝 Botnana Control P2P，可以以下列方式安裝：
 
-若因某種原因此一軟體未正常啟動，可以下列方式手動起動。
+    dpkg -i botnana-control_0.0.1-1_armhf.deb
 
-    sudo su
+解安裝請執行
 
-password: temppwd
-
-執行 EtherCAT master:
-
-    /etc/init.d/ethercat start
-
-執行 Botnana Control 的 Motion Server：
-
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/etherlab/lib
-    /opt/mapacode/botnana-control/bin/motion-server
-
-執行 Botnana Control 的 Web Server：
-
-    /opt/mapacode/botnana-control/bin/hmi
+    dpkg -r botnana-control
 
 ### Configuration
 
