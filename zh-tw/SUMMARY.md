@@ -9,6 +9,7 @@
     - [NodeJS 入門](./nodejs-tutorial.md)
     - [Botnana Control 入門](./botnana-control-tutorial.md)
     - [EtherCAT Master 入門](./ethercat-master-tutorial.md)
+- [支援的 EtherCAT Slaves 清單](./ethercat-slave-list.md)
 - [建構檔](./configuration-file.md)
 - [霸蕉控制軟體](./botnana-control.md)
 
