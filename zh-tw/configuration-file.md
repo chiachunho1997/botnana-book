@@ -16,11 +16,7 @@ Botnana Control Motion Server 的建構檔位於 /opt/mapacode/botnana-control/c
 
 可以有多個 devices，因此使用 `[[device]]`。每個 device 有以下欄位。
 
-* _protocol_ 欄位：本 Device 使用的 protocol，目前只支持 EtherCAT。本欄位不寫時代表 EtherCAT 裝置。
-
-當 _protocol_ = "EtherCAT" 時，可以有以下欄位：
-
-* _position_: Slave 的位置。
+* _position_: Device 的位置。
 * _vendor_id_
 * _product_code_
 * _homing_method_
@@ -39,7 +35,6 @@ Botnana Control Motion Server 的建構檔位於 /opt/mapacode/botnana-control/c
     [server]
       address = "192.168.7.2:3012"
     [[device]]
-      protocol = "EtherCAT"
       position = 1
       vendor_id = 6661
       product_code = 22049
