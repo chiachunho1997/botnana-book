@@ -4,6 +4,8 @@ Botnana A2 預設於開機時自動啟動動程科技的 Botnana Control P2P 軸
 
 因此，使用瀏覽器連上 http://192.168.7.2:3000 。可見到以下畫面。
 
+![Botnana Controlsheet](./botnana-control-controlsheet.png)
+
 如果 Botnana A2 上未安裝 Botnana Control P2P，可以以下列方式安裝：
 
     dpkg -i botnana-control_0.0.1-1_armhf.deb
