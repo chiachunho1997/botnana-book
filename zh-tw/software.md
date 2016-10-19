@@ -23,7 +23,7 @@
 ### 等級一：Botnana Control P2P，點到點軸控、監控
 
 * 系統掃描與建構軟體，自動偵測 EtherCAT 從站。
-* 軸控及監控軟體。支援 EtherCAT 馬達驅動器的 hm，pv 及 pp 模式，可進行原點回歸及點到點運動以及定速運動。
+* 軸控及監控軟體。支援 EtherCAT 馬達驅動器的 hm 及 pp 模式，可進行原點回歸及點到點運動。
 
 ### 等級二：Botnana Control Profiling：三軸同動軸控、監控
 
