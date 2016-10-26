@@ -13,3 +13,4 @@
 * 軸控：可透過 EtherCAT 控制 1-32 軸以上的馬達。目前已支援台達電、Panasonic 的 EtherCAT 馬達驅動器，未來將支援 Coply、Sanyo Denki 以及 Yaskawa EtherCAT 的驅動器，以及接收脈波輸入的驅動器。
 * 類 PLC 控制：可透過 EtherCAT IO 模組進行類似 PLC 的控制，目前支援台達電及 Beckhoff 的 IO 模組。
 * 雲端及使用者 HMI 整合：透過內建的 websocket 伺服器，和客戶的雲端服務或 HMI 整合。
+* CNC 控制器。
