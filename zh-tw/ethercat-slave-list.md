@@ -24,3 +24,8 @@
 ## Yaskawa
 
 * SGDV-2R8AE1A
+
+## Others
+
+* Fastech Ezi-SERVOⅡ EtherCAT Series
+* TECO JSDG2
