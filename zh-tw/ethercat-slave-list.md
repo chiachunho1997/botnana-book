@@ -2,16 +2,25 @@
 
 目前 Botnana Control 支援以下 EtherCAT Slaves：
 
-## 台達電
+## Beckhoff
 
-* Delta ASDA-A2-E, EtherCAT(CoE) Drive
-* Delta R1-EC5500, EtherCAT to E-BUS power module
-* Delta R1-EC6022, 16 digital inputs, sink/source type
-* Delta R1-EC7062, 16 digital outputs, sink type
-* Delta R1-EC9144, 4 channels 16-bit D/A control module
-* Delta R1-EC8124, 4 channels 16-bit single-ended A/D control module
-* Delta R1-EC5621, Single-axis pulse output motion control module
+* EL1088, 8-channel digital input terminal 24 V DC, negative switching
+* EL2088, 8-channel digital output terminal 24 V DC, negative switching
+
+## 台達電 (Delta)
+
+* ASDA-A2-E, EtherCAT(CoE) Drive
+* R1-EC5500, EtherCAT to E-BUS power module
+* R1-EC6022, 16 digital inputs, sink/source type
+* R1-EC7062, 16 digital outputs, sink type
+* R1-EC9144, 4 channels 16-bit D/A control module
+* R1-EC8124, 4 channels 16-bit single-ended A/D control module
+* R1-EC5621, Single-axis pulse output motion control module
 
 ## Panasonic
 
 * EtherCAT communication driver MINAS A5B Series
+
+## Yaskawa
+
+* SGDV-2R8AE1A
