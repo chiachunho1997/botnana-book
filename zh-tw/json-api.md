@@ -13,6 +13,22 @@
 * [Python API](./python-api.md)
 * [Rust API](./rust-api.md)
 
+## Version API
+
+程式可以使用 Version API 取得 Botnana Control 的版本。
+
+    {
+      spec_version: "0.0.1",
+      target: "version",
+      command: "info"
+    }
+
+會回傳以下 JSON 資料：
+
+    {
+        version: "1.0.0"
+    }
+
 ## Configuration API
 
 程式可以使用 Configuration API 來處理參數設定檔。
