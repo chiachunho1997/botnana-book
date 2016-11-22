@@ -1,12 +1,12 @@
-## 建構檔
+## 設定檔
 
-Botnana Control Motion Server 的建構檔位於 /opt/mapacode/botnana-control/config/motion.toml 。
+Botnana Control Motion Server 的設定檔位於 /opt/mapacode/botnana-control/config/motion.toml 。
 
-建構檔使用 [Toml](https://github.com/toml-lang/toml) 格式。說明如下。
+設定檔使用 [Toml](https://github.com/toml-lang/toml) 格式。說明如下。
 
 ### file section
 
-* _spec_version_ 欄位：列出使用的建構檔格式的版本，本文件目前的版本是 0.0.1。
+* _spec_version_ 欄位：列出使用的設定檔格式的版本，本文件目前的版本是 0.0.1。
 
 ### server section
 

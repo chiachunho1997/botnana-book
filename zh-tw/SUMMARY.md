@@ -9,7 +9,14 @@
     - [EtherCAT Master 入門](./ethercat-master-tutorial.md)
     - [Botnana Control 入門](./botnana-control-tutorial.md)
 - [支援的 EtherCAT Slaves 清單](./ethercat-slave-list.md)
-- [建構檔](./configuration-file.md)
+- [設定檔](./configuration-file.md)
+- [程式開發界面](programming.md)
+    - [JSON API](./json-api.md)
+    - [Javascript API](./javascript-api.md)
+    - [Python API](./python-api.md)
+    - [C API](./c-api.md)
+    - [Rust API](./rust-api.md)
+    - [Real-time Script API](./real-time-script-api.md)
 
 -------------------------
 
