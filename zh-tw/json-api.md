@@ -4,13 +4,13 @@
 
 * Java
 * C++ 可使用 JSON API 或 [C API](./c-api.md)
+* Python
 * Ruby
 
 以下程式語言雖然支援 JSON，但建議使用 Botnana Control 另行提供的 API：
 
-* [C API](./c-api.md)
 * [Javascript API](./javascript-api.md)
-* [Python API](./python-api.md)
+* [C API](./c-api.md)
 * [Rust API](./rust-api.md)
 
 ## Version API

@@ -14,7 +14,6 @@
     - [JSON API](./json-api.md)
     - [Javascript API](./javascript-api.md)
     - [Real-time Script API](./real-time-script-api.md)
-    - [Python API](./python-api.md)
     - [C API](./c-api.md)
     - [Rust API](./rust-api.md)
 - [支援的 EtherCAT Slaves 清單](./ethercat-slave-list.md)
