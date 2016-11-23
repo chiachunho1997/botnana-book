@@ -16,4 +16,4 @@ Botnana A2 預設於開機時自動啟動動程科技的 Botnana Control P2P 軸
 
 ### Configuration
 
-請參考 [建構檔](./configuration-file.md) 章節，若無必要，請勿手動修改建構檔。
+請參考 [設定檔](./configuration-file.md) 章節，若無必要，請勿手動修改設定檔。

@@ -22,7 +22,7 @@
       value: 33
     });
 
-修改 configuration 內容並不會立刻儲存至建構檔，也不會影響到 motion 目前使用的參數。
+修改 configuration 內容並不會立刻儲存至設定檔，也不會影響到 motion 目前使用的參數。
 
 ### 儲存設定參數
 
