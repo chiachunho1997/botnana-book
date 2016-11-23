@@ -23,11 +23,11 @@
       command: "info"
     }
 
-會回傳以下 JSON 資料：
+會回傳以下字串：
 
-    {
-        version: "1.0.0"
-    }
+    version|1.0.0
+
+注意預設的回傳資料不是 JSON 格式，而是採用 MTConnect 的一內部格式以簡少資料傳輸量。
 
 ## Configuration API
 
