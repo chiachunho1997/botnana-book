@@ -18,9 +18,9 @@ Botnana Control 在其 real-time event loop 中使用了 Forth VM 以滿足更�
 
 ### EtherCAT queries
 
-* `.device ( n -- )`	Print information of slave n 
-* `.device-diff ( n -- )`	Print information difference of slave n 
-* `list-slaves ( -- )`	Scan devices 
+* `.slave ( n -- )`     Print information of slave n 
+* `.slave-diff ( n -- )`	Print information difference of slave n 
+* `list-slaves ( -- )`	Scan slaves 
 
 ### EtherCAT IO primitives
 

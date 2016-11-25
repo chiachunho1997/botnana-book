@@ -12,11 +12,11 @@ Botnana Control Motion Server 的設定檔位於 /opt/mapacode/botnana-control/c
 
 * _address_ 欄位：motion server 的 websocket 位置。不寫時預設的位置為 192.168.7.2:3012。
 
-### device section
+### slave section
 
-可以有多個 devices，因此使用 `[[device]]`。每個 device 有以下欄位。
+可以有多個 slaves，因此使用 `[[slave]]`。每個 slave 有以下欄位。
 
-* _position_: Device 的位置。
+* _position_: slave 的位置。
 * _vendor_id_
 * _product_code_
 * _homing_method_
@@ -34,7 +34,7 @@ Botnana Control Motion Server 的設定檔位於 /opt/mapacode/botnana-control/c
       spec_version = "0.0.1"
     [server]
       address = "192.168.7.2:3012"
-    [[device]]
+    [[slave]]
       position = 1
       vendor_id = 6661
       product_code = 22049

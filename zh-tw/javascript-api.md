@@ -16,7 +16,7 @@
 
 範例：修改 configuration 檔中 slave 1 的回歸原點方法。
 
-    botnana.config.set_device({
+    botnana.config.set_slave({
       position: 1,
       tag: "homing_method",
       value: 33

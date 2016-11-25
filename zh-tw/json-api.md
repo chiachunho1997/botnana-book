@@ -42,7 +42,7 @@
     {
       spec_version: "0.0.1",
       target: "config",
-      command: "set_device",
+      command: "set_slave",
       arguments: {
         position: 1,
         tag: "homing_method",
