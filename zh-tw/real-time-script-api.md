@@ -11,9 +11,9 @@ Botnana Control 在其 real-time event loop 中使用了 Forth VM 以滿足更�
 
 * `#din ( -- n )`	Digital input count 
 * `#dout ( -- n )`	Digital output count 
-* `dout@( n -- f )`	Read digital output
-* `dout! (f n -- )` Write digital output 
-* `din@ ( n -- f )`	Read digital input 
+* `dout@( n -- t=on )`	Read digital output
+* `dout! ( t=on n -- )` Write digital output 
+* `din@ ( n -- t=on )`	Read digital input 
 * `time-msec ( -- n )`	Current time in milliseconds 
 
 ### EtherCAT queries
@@ -24,9 +24,9 @@ Botnana Control 在其 real-time event loop 中使用了 Forth VM 以滿足更�
 
 ### EtherCAT IO primitives
 
-* `ec-dout@ ( channel n -- value )`	Get DOUT from EtherCAT slave n
-* `ec-dout! ( value channel n -- )`	Set DOUT of EtherCAT slave n
-* `ec-din@ ( channel n -- value )`	Get DIN from EtherCAT slave n 
+* `ec-dout@ ( channel n -- t=on )`	Get DOUT from EtherCAT slave n
+* `ec-dout! ( t=on channel n -- )`	Set DOUT of EtherCAT slave n
+* `ec-din@ ( channel n -- t=on )`	Get DIN from EtherCAT slave n 
 * `-ec-aout ( channel n )`	Disable AOUT of EtherCAT slave n 
 * `+ec-aout ( channel n )`	Enable AOUT of EtherCAT slave n 
 * `ec-aout@ ( channel n -- value )`	Get AOUT from EtherCAT slave n 
@@ -42,8 +42,7 @@ Botnana Control 在其 real-time event loop 中使用了 Forth VM 以滿足更�
 * `reset-fault ( n -- )`	Reset fault for slave n
 * `go ( n -- )`     Set point for slave n
 * `jog ( n position -- )`	Jog slave n to position 
-* `target-reached? ( n -- f )`	Has slave n reached its target position?
-* `recognize ( n -- )`  Recognize slave n reached its target
+* `target-reached? ( n -- t=reached )`	Has slave n reached its target position?
 * `home-offset! ( n offset -- )`	Set home offset of slave n 
 * `homing-acceleration! ( n acceleration -- )`	Set homing acceleration of slave n 
 * `homing-method! ( n method -- )`	Set homing method of slave n
