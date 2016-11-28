@@ -3,15 +3,15 @@
 程式可以使用 JSON 格式和 Botnana Control 溝通。此一方法適用於各種支援 JSON 格式且具有 Websocket 函式庫的語言，例如：
 
 * Java
-* C++ 可使用 JSON API 或 [C API](./c-api.md)
+* C#
+* C++
 * Python
 * Ruby
 
-以下程式語言雖然支援 JSON，但建議使用 Botnana Control 另行提供的 API：
+以下程式語言雖然支援 JSON，但建議使用 Botnana Control 另行提供的 APIs：
 
 * [Javascript API](./javascript-api.md)
-* [C API](./c-api.md)
-* [Rust API](./rust-api.md)
+* [Go API](./go-api.md)
 
 ## Version API
 
