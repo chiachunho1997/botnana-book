@@ -11,7 +11,7 @@ Botnana Control 在其 real-time event loop 中使用了 Forth VM 以滿足更�
 
 * `#din ( -- n )`	Digital input count 
 * `#dout ( -- n )`	Digital output count 
-* `dout@( n -- t=on )`	Read digital output
+* `dout@ ( n -- t=on )`	Read digital output
 * `dout! ( t=on n -- )` Write digital output 
 * `din@ ( n -- t=on )`	Read digital input 
 * `time-msec ( -- n )`	Current time in milliseconds 
@@ -37,20 +37,20 @@ Botnana Control 在其 real-time event loop 中使用了 Forth VM 以滿足更�
 
 ### EtherCAT Drive primitives
 
-* `op-mode! ( n mode -- )`	Set operation mode of slave n
+* `op-mode! ( mode n -- )`	Set operation mode of slave n
 * `pds-goal! ( goal n -- )`	Set PDS goal of slave n
 * `reset-fault ( n -- )`	Reset fault for slave n
 * `go ( n -- )`     Set point for slave n
-* `jog ( n position -- )`	Jog slave n to position 
+* `jog ( position n -- )`	Jog slave n to position 
 * `target-reached? ( n -- t=reached )`	Has slave n reached its target position?
-* `home-offset! ( n offset -- )`	Set home offset of slave n 
-* `homing-acceleration! ( n acceleration -- )`	Set homing acceleration of slave n 
-* `homing-method! ( n method -- )`	Set homing method of slave n
-* `homing-speed-1! ( n speed -- )`	Set homing speed 1 of slave n
-* `homing-speed-2! ( n speed -- )`	Set homing speed 2 of slave n
-* `profile-acceleration! ( n acceleration -- )`	Set profile acceleration of slave n
-* `profile-deceleration! ( n deceleration -- )`	Set profile deceleration of slave n
-* `profile-velocity! ( n velocity -- )`	Set profile velocity of slave n
+* `home-offset! ( offset n -- )`	Set home offset of slave n 
+* `homing-a! ( acceleration n -- )`	Set homing acceleration of slave n 
+* `homing-method! ( method n -- )`	Set homing method of slave n
+* `homing-v1! ( speed n -- )`	Set homing speed 1 of slave n
+* `homing-v2! ( speed n -- )`	Set homing speed 2 of slave n
+* `profile-a1! ( acceleration n -- )`	Set profile acceleration of slave n
+* `profile-a2! ( deceleration n -- )`	Set profile deceleration of slave n
+* `profile-v! ( velocity n -- )`	Set profile velocity of slave n
 
 ### Internal testing primitives
 
