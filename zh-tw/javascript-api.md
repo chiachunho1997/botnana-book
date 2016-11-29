@@ -53,7 +53,7 @@
 
 範例：設定馬達回原點的方式
 
-    botnana.motion.slave(1).set{{
+    botnana.motion.slave(1).set({
       tag: "homing_method",
       value: 33
     });
