@@ -7,11 +7,11 @@
 * C++
 * Python
 * Ruby
+* Go
 
 以下程式語言雖然支援 JSON，但建議使用 Botnana Control 另行提供的 APIs：
 
 * [Javascript API](./javascript-api.md)
-* [Go API](./go-api.md)
 
 ## Version API
 

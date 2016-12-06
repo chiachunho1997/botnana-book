@@ -13,7 +13,6 @@
 - [程式開發界面](programming.md)
     - [JSON API](./json-api.md)
     - [Javascript API](./javascript-api.md)
-    - [Go API](./go-api.md)
     - [Real-time Script API](./real-time-script-api.md)
 - [支援的 EtherCAT Slaves 清單](./ethercat-slave-list.md)
 
