@@ -13,6 +13,15 @@
 
 * [Javascript API](./javascript-api.md)
 
+
+## 回傳資料格式
+
+Botnana Control 若回傳資料，格式一律為
+
+    tag1|value1|tag2|value2...
+
+此一格式可以很容易轉換為 JSON 格式。
+
 ## Version API
 
 程式可以使用 Version API 取得 Botnana Control 的版本。
@@ -23,11 +32,9 @@
       command: "get"
     }
 
-會回傳以下 JSON：
+會回傳以下字串：
 
-    {
-      version: "1.0.0"
-    }
+    version|1.0.0
 
 ## Configuration API
 
@@ -108,10 +115,7 @@
 
 回傳資料範例為，
 
-    {
-      homing_method: 33,
-      home_offset: 20
-    }
+    homing_method|33|home_offset|20
 
 ### 設定及讀取 IO 點狀態
 
@@ -133,12 +137,6 @@ Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來
       arguments: {
         script: "1 33 homing-method!"        
       }
-    }
-
-Real-time script 若回傳資料，格式為
-
-    {
-      result: "tag1|value1|tag2|value2..."
     }
 
 Realt-ime script 的指令集請見 [Real-time script API](./real-time-script-api.md)

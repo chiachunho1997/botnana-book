@@ -10,14 +10,10 @@
 
 範例：
 
-    function callback(result, err) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log("result: " + result);
-        }
-    }
-    botnana.version.get(callback);
+    botnana.on_version(function (version) {
+        console.log("version: " + version);        
+    });
+    botnana.version.get();
 
 ## Configuration API
 
@@ -47,6 +43,27 @@
 
     botnana.config.save();
 
+## Event API
+
+Botnana Control 回傳資料的格式為
+
+    tag1|value1|tag2|value2...
+
+透過內建的 handler 處理，這些 tags 被轉成各種事件。可使用事件的 API 來處理這些事件。例如：
+
+    botnana.motion.on_log(function (log) {
+        console.log("log: " + log);
+    });
+    botnana.motion.on_error(function (err) {
+        console.log("err: " + err);
+    });
+    botnana.motion.slave(1).on_homing_method(function (value) {
+        console.log("result: " + result);
+    });
+    botnana.motion.slave(1).on_dout(function (dout, value) {
+        console.log("dout " + aout + ": " + value );
+    });
+
 ## Slave API
 
 ### 設定馬達驅動器參數
@@ -64,55 +81,33 @@
 
 範例：取得馬達回原點的方式
 
-    botnana.motion.slave(1).get("homing_method", function (result, err) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log("result: " + result);
-        }
+    botnana.motion.slave(1).on_homing_method(function (value) {
+        console.log("result: " + result);
     });
- 
- 範例：馬達的參數眾多，可以以下法一次存取多個參數，以避免 callback hell：
-
-     botnana.motion.slave(1).get(["homing_method", "home_offset"], function (result, err) {
-         if(err) {
-             console.log(err);
-         } else {
-             console.log("homing_method: " + result.homing_method);
-             console.log("home_offset: " + result.home_offset);
-         }
-     });
+    botnana.motion.slave(1).get("homing_method");
 
 ### 設定及讀取 IO 點狀態
 
 範例：數位及類比 IO 的輸出及輸入：
 
-    function callback(result, err) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log("value: " + result)
-        }
-    }
-
+    botnana.motion.slave(1).on_dout(function (dout, value) {
+        console.log("dout " + aout + ": " + value );
+    });
+    botnana.motion.slave(1).on_din(function (din, value) {
+        console.log("din " + ain + ": " + value );
+    });
+    botnana.motion.slave(1).on_aout(function (aout, value) {
+        console.log("aout " + aout + ": " + value );
+    });
+    botnana.motion.slave(1).on_ain(function (ain, value) {
+        console.log("ain " + ain + ": " + value );
+    });
     botnana.motion.slave(1).set_dout{1, true);
-    botnana.motion.slave(1).get_dout(1, callback);
-    botnana.motion.slave(1).get_din(1, callback);
+    botnana.motion.slave(1).get_dout(1);
+    botnana.motion.slave(1).get_din(1);
     botnana.motion.slave(1).set_aout(1, 30);
-    botnana.motion.slave(1).get_aout(1, callback);
-    botnana.motion.slave(1).get_ain(1, callback);
-
- 範例：可以以下法一次存取多個 IO 點，以避免 callback hell：
-
-     botnana.motion.slave(1).get_dout([1, 3, 4], function (result, err) {
-         if(err) {
-             console.log(err);
-         } else {
-             console.log("Digital output 1: " + result[1]);
-             console.log("Digital output 3: " + result[3]);
-             console.log("Digital output 4: " + result[4]);
-         }
-     });
+    botnana.motion.slave(1).get_aout(1);
+    botnana.motion.slave(1).get_ain(1);
 
 範例：某些 slave 的 Analog IO 必須要輸出致能：
 
@@ -120,3 +115,11 @@
     botnana.motion.slave(1).enable_aout(5);
     botnana.motion.slave(1).disable_ain(2);
     botnana.motion.slave(1).enable_ain(2);
+
+## Low-level Real-time Script API
+
+Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來滿足更複雜的程式需求。以下為使用 Real-time script 設定 Slave 1 回歸原點方法的 Javascript 命令。一般使用者並不需要使用此一 API。
+
+    botnana.motion.evaluate("1 33 homing-method!");
+
+Realt-ime script 的指令集請見 [Real-time script API](./real-time-script-api.md)
