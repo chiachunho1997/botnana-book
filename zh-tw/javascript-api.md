@@ -10,7 +10,7 @@
 
 範例：
 
-    botnana.on_version(function (version) {
+    botnana.on("version", function (version) {
         console.log("version: " + version);        
     });
     botnana.version.get();
@@ -51,16 +51,16 @@ Botnana Control 回傳資料的格式為
 
 透過內建的 handler 處理，這些 tags 被轉成各種事件。可使用事件的 API 來處理這些事件。例如：
 
-    botnana.motion.on_log(function (log) {
+    botnana.motion.on("log", function (log) {
         console.log("log: " + log);
     });
-    botnana.motion.on_error(function (err) {
+    botnana.motion.on("error", function (err) {
         console.log("err: " + err);
     });
-    botnana.motion.slave(1).on_homing_method(function (value) {
+    botnana.motion.slave(1).on("homing_method", function (value) {
         console.log("result: " + result);
     });
-    botnana.motion.slave(1).on_dout(function (dout, value) {
+    botnana.motion.slave(1).on("dout", function (dout, value) {
         console.log("dout " + aout + ": " + value );
     });
 
@@ -81,7 +81,7 @@ Botnana Control 回傳資料的格式為
 
 範例：取得馬達回原點的方式
 
-    botnana.motion.slave(1).on_homing_method(function (value) {
+    botnana.motion.slave(1).on("homing_method", function (value) {
         console.log("result: " + result);
     });
     botnana.motion.slave(1).get("homing_method");
@@ -90,16 +90,16 @@ Botnana Control 回傳資料的格式為
 
 範例：數位及類比 IO 的輸出及輸入：
 
-    botnana.motion.slave(1).on_dout(function (dout, value) {
+    botnana.motion.slave(1).on("dout", function (dout, value) {
         console.log("dout " + aout + ": " + value );
     });
-    botnana.motion.slave(1).on_din(function (din, value) {
+    botnana.motion.slave(1).on("din", function (din, value) {
         console.log("din " + ain + ": " + value );
     });
-    botnana.motion.slave(1).on_aout(function (aout, value) {
+    botnana.motion.slave(1).on("aout", function (aout, value) {
         console.log("aout " + aout + ": " + value );
     });
-    botnana.motion.slave(1).on_ain(function (ain, value) {
+    botnana.motion.slave(1).on("ain", function (ain, value) {
         console.log("ain " + ain + ": " + value );
     });
     botnana.motion.slave(1).set_dout{1, true);
