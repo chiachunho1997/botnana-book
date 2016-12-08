@@ -117,6 +117,14 @@ Botnana Control 若回傳資料，格式一律為
 
     homing_method|33|home_offset|20
 
+### 清除馬達驅動器異警
+
+    {
+      spec_version: "0.0.1",
+      target: "slave",
+      command: "reset_fault"
+    }
+
 ### 設定及讀取 IO 點狀態
 
 TODO

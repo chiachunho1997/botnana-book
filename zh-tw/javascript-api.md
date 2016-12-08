@@ -86,6 +86,10 @@ Botnana Control 回傳資料的格式為
     });
     botnana.motion.slave(1).get("homing_method");
 
+### 清除馬達驅動器異警
+
+    botnana.motion.slave(i).reset_fault();
+
 ### 設定及讀取 IO 點狀態
 
 範例：數位及類比 IO 的輸出及輸入：
