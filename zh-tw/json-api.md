@@ -1,5 +1,7 @@
 # JSON API
 
+Botnana Control 的 JSON API 採用 [JSON-RPC 2.0](http://www.jsonrpc.org/specification) 。
+
 程式可以使用 JSON 格式和 Botnana Control 溝通。此一方法適用於各種支援 JSON 格式且具有 Websocket 函式庫的語言，例如：
 
 * Java
@@ -27,9 +29,8 @@ Botnana Control 若回傳資料，格式一律為
 程式可以使用 Version API 取得 Botnana Control 的版本。
 
     {
-      spec_version: "0.0.1",
-      target: "version",
-      command: "get"
+      "jsonrpc": "2.0",
+      "method": "version.get"
     }
 
 會回傳以下字串：
@@ -47,13 +48,12 @@ Botnana Control 若回傳資料，格式一律為
 範例：修改 slave 1 的回歸原點方法。
 
     {
-      spec_version: "0.0.1",
-      target: "config",
-      command: "set_slave",
-      arguments: {
-        position: 1,
-        tag: "homing_method",
-        value: 33
+      "jsonrpc": "2.0",
+      "method": "config.set_slave",
+      "params": {
+        "position": 1,
+        "tag": "homing_method",
+        "value": 33
       }
     }
 
@@ -66,9 +66,8 @@ Botnana Control 若回傳資料，格式一律為
 範例：要求儲存 configuration：
 
     {
-      spec_version: "0.0.1",
-      target: "config",
-      command: "save"
+      "jsonrpc": "2.0",
+      "method": "config.save"
     }
 
 ## Slave API
@@ -91,25 +90,23 @@ Botnana Control 若回傳資料，格式一律為
 使者用可以使用 set 命令設定這些參數。
 
     {
-      spec_version: "0.0.1",
-      target: "slave",
-      command: "set",
-      arguments: {
-        position: 1,
-        tag: "homing_method",
-        value: 33
+      "jsonrpc": "2.0",
+      "method": "slave.set",
+      "params": {
+        "position": 1,
+        "tag": "homing_method",
+        "value": 33
       }
     }
 
 使用者可以使用 get 取得多筆參數。
 
     {
-      spec_version: "0.0.1",
-      target: "slave",
-      command: "get",
-      arguments: {
-        position: 1,
-        tags: ["homing_method", "home_offset"]
+      "jsonrpc": "2.0",
+      "method": "slave.get",
+      "params": {
+        "position": 1,
+        "tags": ["homing_method", "home_offset"]
       }
     }
 
@@ -120,9 +117,8 @@ Botnana Control 若回傳資料，格式一律為
 ### 清除馬達驅動器異警
 
     {
-      spec_version: "0.0.1",
-      target: "slave",
-      command: "reset_fault"
+      "jsonrpc": "2.0",
+      "method": "slave.reset_fault"
     }
 
 ### 設定及讀取 IO 點狀態
@@ -139,11 +135,10 @@ Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來
 一般使用者並不需要使用此一 API。
 
     {
-      spec_version: "0.0.1",
-      target: "motion",
-      command: "evaluate",
-      arguments: {
-        script: "1 33 homing-method!"        
+      "jsonrpc": "2.0",
+      "method": "motion.evaluate",
+      "params": {
+        "script": "1 33 homing-method!"        
       }
     }
 

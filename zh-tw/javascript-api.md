@@ -90,7 +90,25 @@ Botnana Control 回傳資料的格式為
 
     botnana.config.save(ws);
 
+## Master API
+
+取得 slaves 資訊。
+
+    botnana.motion.get_slaves(ws);
+
 ## Slave API
+
+### 取得 Slave 總數
+
+    botnana.on("slaves", function(slaves) {
+        let s = slaves.split(",");
+        console.log("slave counts: " + s.length/2);
+    })
+    botnana.motion.get_slaves(ws);
+
+### 取得某一 Slave 資訊
+
+    botnana.motion.get_slave(ws, 1);
 
 ### 設定馬達驅動器參數
 
