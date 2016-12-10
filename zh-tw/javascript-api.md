@@ -6,33 +6,24 @@
 
 `botnana` 函式庫亦可在瀏覽器執行。
 
-## 連線
+## 範例
 
 以下範例使用 Websocket 連上 Botnana Control 後取得 Botnana Control 的版本：
 
-    var WebSocket = require('ws');
-
-    var ws = new WebSocket('ws://192.168.7.2:3012');
-    // ws = new WebSocket('ws://localhost:3012');
-
-    ws.on('message', function(data, flags) {
-        console.log(data);
-        botnana.handle_response(data);
-    });
-
-    ws.on('open', function() {
-        botnana.sender = ws;
-        botnana.version.get();
-    });
-
-    ws.on('close', function() {
-        botnana.sender = null;
-    })
+    var botnana = require("botnana");
 
     botnana.on("version", function(version) {
         console.log("version: " + version);
     })
 
+    botnana.on("ready", function() {
+        botnana.version.get();
+    });
+
+    // Start communicating with Botnana Control at 'ws://192.168.7.2:3012'.
+    // If the programm is running on a Botnana Control board, IP address should
+    // be 'ws://localhost:3012'.
+    botnana.start('ws://192.168.7.2:3012');
 
 ## Event API
 
@@ -65,7 +56,9 @@ Botnana Control 回傳資料的格式為
     botnana.on("version", function (version) {
         console.log("version: " + version);        
     });
-    botnana.version.get();
+    botnana.on("ready", function() {
+        botnana.version.get();
+    })
 
 ## Configuration API
 
@@ -95,25 +88,7 @@ Botnana Control 回傳資料的格式為
 
     botnana.config.save();
 
-## Master API
-
-取得 slaves 資訊。
-
-    botnana.motion.get_slaves();
-
 ## Slave API
-
-### 取得 Slave 總數
-
-    botnana.on("slaves", function(slaves) {
-        let s = slaves.split(",");
-        console.log("slave counts: " + s.length/2);
-    })
-    botnana.motion.get_slaves();
-
-### 取得某一 Slave 資訊
-
-    botnana.motion.get_slave(1);
 
 ### 設定馬達驅動器參數
 
@@ -133,7 +108,9 @@ Botnana Control 回傳資料的格式為
     botnana.motion.slave(1).on("homing_method", function (value) {
         console.log("result: " + result);
     });
-    botnana.motion.slave(1).get("homing_method");
+    botnana.on("ready", function() {
+        botnana.motion.slave(1).get("homing_method");
+    });
 
 ### 清除馬達驅動器異警
 
@@ -155,12 +132,14 @@ Botnana Control 回傳資料的格式為
     botnana.motion.slave(1).on("ain", function (ain, value) {
         console.log("ain " + ain + ": " + value );
     });
-    botnana.motion.slave(1).set_dout{1, true);
-    botnana.motion.slave(1).get_dout(1);
-    botnana.motion.slave(1).get_din(1);
-    botnana.motion.slave(1).set_aout(1, 30);
-    botnana.motion.slave(1).get_aout(1);
-    botnana.motion.slave(1).get_ain(1);
+    botnana.on("ready", function() {
+        botnana.motion.slave(1).set_dout{1, true);
+        botnana.motion.slave(1).get_dout(1);
+        botnana.motion.slave(1).get_din(1);
+        botnana.motion.slave(1).set_aout(1, 30);
+        botnana.motion.slave(1).get_aout(1);
+        botnana.motion.slave(1).get_ain(1);
+    });
 
 範例：某些 slave 的 Analog IO 必須要輸出致能：
 
@@ -176,3 +155,24 @@ Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來
     botnana.motion.evaluate("1 33 homing-method!");
 
 Realt-ime script 的指令集請見 [Real-time script API](./real-time-script-api.md)
+
+## Hidden API
+
+Hidden API 是一群用於 Javascript API 內部實作用的函式，在未來很可能會改變作法，不建議一般使用者使用。
+
+### 取得 slaves 資訊
+
+    botnana._.get_slaves();
+
+以下範例取得 Slave 總數
+
+    botnana.on("slaves", function(slaves) {
+        let s = slaves.split(",");
+        console.log("slave counts: " + s.length/2);
+    })
+    botnana._.get_slaves();
+
+### 取得某一 Slave 資訊
+
+    botnana._.get_slave(1);
+
