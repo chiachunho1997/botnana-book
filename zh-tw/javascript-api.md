@@ -12,9 +12,6 @@
 
     var WebSocket = require('ws');
 
-    // Set botnana.sender to ws;
-    botnana.sender = ws;
-
     var ws = new WebSocket('ws://192.168.7.2:3012');
     // ws = new WebSocket('ws://localhost:3012');
 
@@ -23,9 +20,14 @@
         botnana.handle_response(data);
     });
 
-    ws.on('open', function () {
+    ws.on('open', function() {
+        botnana.sender = ws;
         botnana.version.get();
     });
+
+    ws.on('close', function() {
+        botnana.sender = null;
+    })
 
     botnana.on("version", function(version) {
         console.log("version: " + version);
