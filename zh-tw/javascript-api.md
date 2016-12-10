@@ -12,6 +12,9 @@
 
     var WebSocket = require('ws');
 
+    // Set botnana.sender to ws;
+    botnana.sender = ws;
+
     var ws = new WebSocket('ws://192.168.7.2:3012');
     // ws = new WebSocket('ws://localhost:3012');
 
@@ -21,7 +24,7 @@
     });
 
     ws.on('open', function () {
-        botnana.version.get(ws);
+        botnana.version.get();
     });
 
     botnana.on("version", function(version) {
@@ -60,7 +63,7 @@ Botnana Control 回傳資料的格式為
     botnana.on("version", function (version) {
         console.log("version: " + version);        
     });
-    botnana.version.get(ws);
+    botnana.version.get();
 
 ## Configuration API
 
@@ -72,7 +75,7 @@ Botnana Control 回傳資料的格式為
 
 範例：修改 configuration 檔中 slave 1 的回歸原點方法。
 
-    botnana.config.set_slave(ws, {
+    botnana.config.set_slave({
       position: 1,
       tag: "homing_method",
       value: 33
@@ -88,13 +91,13 @@ Botnana Control 回傳資料的格式為
 
 範例：要求儲存 configuration：
 
-    botnana.config.save(ws);
+    botnana.config.save();
 
 ## Master API
 
 取得 slaves 資訊。
 
-    botnana.motion.get_slaves(ws);
+    botnana.motion.get_slaves();
 
 ## Slave API
 
@@ -104,35 +107,35 @@ Botnana Control 回傳資料的格式為
         let s = slaves.split(",");
         console.log("slave counts: " + s.length/2);
     })
-    botnana.motion.get_slaves(ws);
+    botnana.motion.get_slaves();
 
 ### 取得某一 Slave 資訊
 
-    botnana.motion.get_slave(ws, 1);
+    botnana.motion.get_slave(1);
 
 ### 設定馬達驅動器參數
 
 範例：設定馬達回原點的方式
 
-    botnana.motion.slave(1).set(ws, {
+    botnana.motion.slave(1).set({
       tag: "homing_method",
       value: 33
     });
 
 或
 
-    botnana.motion.slave(1).set_homing_method{ws, 33);
+    botnana.motion.slave(1).set_homing_method{33);
 
 範例：取得馬達回原點的方式
 
     botnana.motion.slave(1).on("homing_method", function (value) {
         console.log("result: " + result);
     });
-    botnana.motion.slave(1).get(ws, "homing_method");
+    botnana.motion.slave(1).get("homing_method");
 
 ### 清除馬達驅動器異警
 
-    botnana.motion.slave(i).reset_fault(ws);
+    botnana.motion.slave(i).reset_fault();
 
 ### 設定及讀取 IO 點狀態
 
@@ -150,24 +153,24 @@ Botnana Control 回傳資料的格式為
     botnana.motion.slave(1).on("ain", function (ain, value) {
         console.log("ain " + ain + ": " + value );
     });
-    botnana.motion.slave(1).set_dout{ws, 1, true);
-    botnana.motion.slave(1).get_dout(ws, 1);
-    botnana.motion.slave(1).get_din(ws, 1);
-    botnana.motion.slave(1).set_aout(ws, 1, 30);
-    botnana.motion.slave(1).get_aout(ws, 1);
-    botnana.motion.slave(1).get_ain(ws, 1);
+    botnana.motion.slave(1).set_dout{1, true);
+    botnana.motion.slave(1).get_dout(1);
+    botnana.motion.slave(1).get_din(1);
+    botnana.motion.slave(1).set_aout(1, 30);
+    botnana.motion.slave(1).get_aout(1);
+    botnana.motion.slave(1).get_ain(1);
 
 範例：某些 slave 的 Analog IO 必須要輸出致能：
 
-    botnana.motion.slave(1).disable_aout(ws, 5);
-    botnana.motion.slave(1).enable_aout(ws, 5);
-    botnana.motion.slave(1).disable_ain(ws, 2);
-    botnana.motion.slave(1).enable_ain(ws, 2);
+    botnana.motion.slave(1).disable_aout(5);
+    botnana.motion.slave(1).enable_aout(5);
+    botnana.motion.slave(1).disable_ain(2);
+    botnana.motion.slave(1).enable_ain(2);
 
 ## Low-level Real-time Script API
 
 Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來滿足更複雜的程式需求。以下為使用 Real-time script 設定 Slave 1 回歸原點方法的 Javascript 命令。一般使用者並不需要使用此一 API。
 
-    botnana.motion.evaluate(ws, "1 33 homing-method!");
+    botnana.motion.evaluate("1 33 homing-method!");
 
 Realt-ime script 的指令集請見 [Real-time script API](./real-time-script-api.md)
