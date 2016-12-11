@@ -9,8 +9,8 @@ Botnana Control 在其 real-time event loop 中使用了 Forth VM 以滿足更�
 
 ### Host primitives
 
-* `#din ( -- n )`	Digital input count 
-* `#dout ( -- n )`	Digital output count 
+* `#dins ( -- n )`	Digital input count 
+* `#douts ( -- n )`	Digital output count 
 * `dout@ ( n -- t=on )`	Read digital output
 * `dout! ( t=on n -- )` Write digital output 
 * `din@ ( n -- t=on )`	Read digital input 
