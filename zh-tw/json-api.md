@@ -91,7 +91,7 @@ Botnana Control 若回傳資料，格式一律為
 
     {
       "jsonrpc": "2.0",
-      "method": "slave.set",
+      "method": "ethercat.slave.set",
       "params": {
         "position": 1,
         "tag": "homing_method",
@@ -99,14 +99,13 @@ Botnana Control 若回傳資料，格式一律為
       }
     }
 
-使用者可以使用 get 取得多筆參數。
+使用者可以使用 get 取得所有參數。
 
     {
       "jsonrpc": "2.0",
-      "method": "slave.get",
+      "method": "ethercat.slave.get",
       "params": {
-        "position": 1,
-        "tags": ["homing_method", "home_offset"]
+        "position": 1
       }
     }
 
@@ -118,7 +117,7 @@ Botnana Control 若回傳資料，格式一律為
 
     {
       "jsonrpc": "2.0",
-      "method": "slave.reset_fault"
+      "method": "ethercat.slave.reset_fault"
     }
 
 ### 設定及讀取 IO 點狀態
