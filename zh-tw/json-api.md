@@ -111,7 +111,14 @@ Botnana Control 若回傳資料，格式一律為
 
 回傳資料範例為，
 
-    homing_method|33|home_offset|20
+    vendor.1|Panasonic|product.1|MBDHT|control_word.1|0|status_word.1|1616|
+    pds_state.1|Switch On Disabled|pds_goal.1|Switch On Disabled|
+    operation_mode.1|home|real_position.1|0|target_position.1|0|
+    home_offset.1|0|homing_method.1|33|homing_speed_1.1|1000|
+    homing_speed_2.1|250|homing_acceleration.1|500|
+    profile_velocity.1|500000|profile_acceleration.1|200|profile_deceleration.1|200
+
+其中的 `.1` 代表資料來自位置為 1 的 slave。
 
 ### 清除馬達驅動器異警
 
