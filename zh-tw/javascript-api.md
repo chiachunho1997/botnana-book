@@ -55,11 +55,11 @@ Botnana Control 回傳資料的格式為
     botnana.on("error", function (err) {
         console.log("err: " + err);
     });
-    botnana.ethercat.slave(1).on("homing_method", function (value) {
-        console.log("result: " + result);
+    botnana.on("homing_method.3", function (value) {
+        console.log("Homing method of slave 3 is " + result);
     });
-    botnana.ethercat.slave(1).on("dout", function (dout, value) {
-        console.log("dout " + aout + ": " + value );
+    botnana.on("dout.2.1", function (value) {
+        console.log("dout 1 of slave 2 is " + value);
     });
 
 ## Version API
@@ -118,7 +118,7 @@ Botnana Control 回傳資料的格式為
 
 範例：取得馬達回原點的方式
 
-    botnana.ethercat.slave(1).on("homing_method", function (homing_method) {
+    botnana.on("homing_method.1", function (homing_method) {
         console.log("result: " + homing_method);
     });
     botnana.on("ready", function() {
@@ -133,25 +133,25 @@ Botnana Control 回傳資料的格式為
 
 範例：數位及類比 IO 的輸出及輸入：
 
-    botnana.ethercat.slave(1).on("dout", function (dout, value) {
-        console.log("dout " + aout + ": " + value );
+    botnana.on("dout.1.5", function (value) {
+        console.log("dout 5 of slave 1 is " + value);
     });
-    botnana.ethercat.slave(1).on("din", function (din, value) {
-        console.log("din " + ain + ": " + value );
+    botnana.on("din.2.4", function (value) {
+        console.log("din 4 of slave 5 is " + value);
     });
-    botnana.ethercat.slave(1).on("aout", function (aout, value) {
-        console.log("aout " + aout + ": " + value );
+    botnana.on("aout.3.2", function (value) {
+        console.log("aout 2 of slave 3 is " + value);
     });
-    botnana.ethercat.slave(1).on("ain", function (ain, value) {
-        console.log("ain " + ain + ": " + value );
+    botnana.on("ain.4.2", function (value) {
+        console.log("ain 2 of slave 2 is " + value );
     });
     botnana.on("ready", function() {
         botnana.ethercat.slave(1).set_dout{1, true);
-        botnana.ethercat.slave(1).get_dout(1);
-        botnana.ethercat.slave(1).get_din(1);
-        botnana.ethercat.slave(1).set_aout(1, 30);
-        botnana.ethercat.slave(1).get_aout(1);
-        botnana.ethercat.slave(1).get_ain(1);
+        botnana.ethercat.slave(3).set_aout(1, 30);
+        botnana.ethercat.slave(1).get();
+        botnana.ethercat.slave(2).get();
+        botnana.ethercat.slave(3).get();
+        botnana.ethercat.slave(3).get();
     });
 
 範例：某些 slave 的 Analog IO 必須要輸出致能：
