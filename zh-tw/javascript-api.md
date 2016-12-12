@@ -25,27 +25,40 @@
     // be 'ws://localhost:3012'.
     botnana.start('ws://192.168.7.2:3012');
 
-## Event API
+## Start 和 Ready
+
+程式使用 `botnana.start(ip_address)` 連上位於 `ip_address` 的 Botnana Control。Ready 事件代表已經連上並建立基本資料，
+可以開始處理之後函式內的工作。
+
+    botnana.on("ready", function() {
+        // 工作 1
+        // 工作 2
+        // ...
+    });
+
+    botnana.start("ws://192.168.7.2:3012");
+
+## Data Event API
 
 Botnana Control 回傳資料的格式為
 
     tag1|value1|tag2|value2...
 
-經過函式 `botnana.handle_response(response)` 處理後，tags 被轉成事件。可使用事件 API 處理這些事件。例如：
+經過函式 `botnana.handle_response(response)` 處理後，tags 被轉成事件。可使用資料事件 API 處理這些事件。例如：
 
     botnana.on("version", function(version) {
         console.log("version: " + version);
     })
-    botnana.motion.on("log", function (log) {
+    botnana.on("log", function (log) {
         console.log("log: " + log);
     });
-    botnana.motion.on("error", function (err) {
+    botnana.on("error", function (err) {
         console.log("err: " + err);
     });
-    botnana.motion.slave(1).on("homing_method", function (value) {
+    botnana.ethercat.slave(1).on("homing_method", function (value) {
         console.log("result: " + result);
     });
-    botnana.motion.slave(1).on("dout", function (dout, value) {
+    botnana.ethercat.slave(1).on("dout", function (dout, value) {
         console.log("dout " + aout + ": " + value );
     });
 
@@ -76,7 +89,7 @@ Botnana Control 回傳資料的格式為
       value: 33
     });
 
-修改 configuration 內容並不會立刻儲存至設定檔，也不會影響到 motion 目前使用的參數。
+修改 configuration 內容並不會立刻儲存至設定檔，也不會影響到 EtherCAT slaves 目前使用的參數。
 
 ### 儲存設定參數
 
@@ -94,59 +107,59 @@ Botnana Control 回傳資料的格式為
 
 範例：設定馬達回原點的方式
 
-    botnana.motion.slave(1).set({
+    botnana.ethercat.slave(1).set({
       tag: "homing_method",
       value: 33
     });
 
 或
 
-    botnana.motion.slave(1).set_homing_method{33);
+    botnana.ethercat.slave(1).set_homing_method{33);
 
 範例：取得馬達回原點的方式
 
-    botnana.motion.slave(1).on("homing_method", function (value) {
-        console.log("result: " + result);
+    botnana.ethercat.slave(1).on("homing_method", function (homing_method) {
+        console.log("result: " + homing_method);
     });
     botnana.on("ready", function() {
-        botnana.motion.slave(1).get("homing_method");
+        botnana.ethercat.slave(1).get();
     });
 
 ### 清除馬達驅動器異警
 
-    botnana.motion.slave(i).reset_fault();
+    botnana.ethercat.slave(i).reset_fault();
 
 ### 設定及讀取 IO 點狀態
 
 範例：數位及類比 IO 的輸出及輸入：
 
-    botnana.motion.slave(1).on("dout", function (dout, value) {
+    botnana.ethercat.slave(1).on("dout", function (dout, value) {
         console.log("dout " + aout + ": " + value );
     });
-    botnana.motion.slave(1).on("din", function (din, value) {
+    botnana.ethercat.slave(1).on("din", function (din, value) {
         console.log("din " + ain + ": " + value );
     });
-    botnana.motion.slave(1).on("aout", function (aout, value) {
+    botnana.ethercat.slave(1).on("aout", function (aout, value) {
         console.log("aout " + aout + ": " + value );
     });
-    botnana.motion.slave(1).on("ain", function (ain, value) {
+    botnana.ethercat.slave(1).on("ain", function (ain, value) {
         console.log("ain " + ain + ": " + value );
     });
     botnana.on("ready", function() {
-        botnana.motion.slave(1).set_dout{1, true);
-        botnana.motion.slave(1).get_dout(1);
-        botnana.motion.slave(1).get_din(1);
-        botnana.motion.slave(1).set_aout(1, 30);
-        botnana.motion.slave(1).get_aout(1);
-        botnana.motion.slave(1).get_ain(1);
+        botnana.ethercat.slave(1).set_dout{1, true);
+        botnana.ethercat.slave(1).get_dout(1);
+        botnana.ethercat.slave(1).get_din(1);
+        botnana.ethercat.slave(1).set_aout(1, 30);
+        botnana.ethercat.slave(1).get_aout(1);
+        botnana.ethercat.slave(1).get_ain(1);
     });
 
 範例：某些 slave 的 Analog IO 必須要輸出致能：
 
-    botnana.motion.slave(1).disable_aout(5);
-    botnana.motion.slave(1).enable_aout(5);
-    botnana.motion.slave(1).disable_ain(2);
-    botnana.motion.slave(1).enable_ain(2);
+    botnana.ethercat.slave(1).disable_aout(5);
+    botnana.ethercat.slave(1).enable_aout(5);
+    botnana.ethercat.slave(1).disable_ain(2);
+    botnana.ethercat.slave(1).enable_ain(2);
 
 ## Low-level Real-time Script API
 
@@ -171,8 +184,3 @@ Hidden API 是一群用於 Javascript API 內部實作用的函式，在未來�
         console.log("slave counts: " + s.length/2);
     })
     botnana._.get_slaves();
-
-### 取得某一 Slave 資訊
-
-    botnana._.get_slave(1);
-
