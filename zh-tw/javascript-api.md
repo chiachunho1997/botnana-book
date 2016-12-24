@@ -103,20 +103,16 @@ Botnana Control 回傳資料的格式為
 
 ## Slave API
 
-### 設定馬達驅動器參數
+### 讀取 Slave 狀態
 
-範例：設定馬達回原點的方式
+函式 `get()` 可以用來取得 Slave 的狀態。例如
 
-    botnana.ethercat.slave(1).set({
-      tag: "homing_method",
-      value: 33
-    });
+        botnana.ethercat.slave(1).get();
 
-或
+因為經過函式 `botnana.handle_response(response)` 處理後，回傳的資訊會產生對應的事件，
+可以使用 Event API 處理這些回傳的資料。
 
-    botnana.ethercat.slave(1).set_homing_method{33);
-
-範例：取得馬達回原點的方式
+範例：取得位於第一個 Slave 位置的馬達驅動器回原點的方式
 
     botnana.on("homing_method.1", function (homing_method) {
         console.log("result: " + homing_method);
@@ -124,6 +120,16 @@ Botnana Control 回傳資料的格式為
     botnana.on("ready", function() {
         botnana.ethercat.slave(1).get();
     });
+
+### 設定馬達驅動器參數
+
+設定馬達驅動器參數的命令格式為
+
+    botnana.ethercat.slave(i).set(tag, value);
+
+範例：設定馬達回原點的方式
+
+    botnana.ethercat.slave(1).set("homgin_method", 33);
 
 ### 清除馬達驅動器異警
 
@@ -146,7 +152,7 @@ Botnana Control 回傳資料的格式為
         console.log("ain 2 of slave 2 is " + value );
     });
     botnana.on("ready", function() {
-        botnana.ethercat.slave(1).set_dout{1, true);
+        botnana.ethercat.slave(1).set_dout{1, 1);
         botnana.ethercat.slave(3).set_aout(1, 30);
         botnana.ethercat.slave(1).get();
         botnana.ethercat.slave(2).get();

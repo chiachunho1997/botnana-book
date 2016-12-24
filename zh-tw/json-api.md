@@ -159,16 +159,75 @@ Botnana Control 若回傳資料，格式一律為
       }
     }
 
-## 取得馬達驅動器參數及狀態
-
 ### 清除馬達驅動器異警
+
+範例，清除第一個 Slave 的異警：
 
     {
       "jsonrpc": "2.0",
-      "method": "ethercat.slave.reset_fault"
+      "method": "ethercat.slave.reset_fault",
+      "params": {
+          "position": 1,
+      }
     }
 
-### 設定及讀取 IO 點狀態
+### 設定 IO 點狀態
+
+    {
+      "jsonrpc": "2.0",
+      "method": "ethercat.slave.set_dout",
+      "params": {
+          "position": 1,
+          "channel": 2,
+          "value": 1,
+      }
+    }
+
+    {
+      "jsonrpc": "2.0",
+      "method": "ethercat.slave.set_aout",
+      "params": {
+          "position": 1,
+          "channel": 2,
+          "value": 20,
+      }
+    }
+
+    {
+      "jsonrpc": "2.0",
+      "method": "ethercat.slave.disable_aout",
+      "params": {
+          "position": 1,
+          "channel": 2,
+      }
+    }
+
+    {
+      "jsonrpc": "2.0",
+      "method": "ethercat.slave.enable_aout",
+      "params": {
+          "position": 1,
+          "channel": 2,
+      }
+    }
+
+    {
+      "jsonrpc": "2.0",
+      "method": "ethercat.slave.disable_ain",
+      "params": {
+          "position": 1,
+          "channel": 2,
+      }
+    }
+
+    {
+      "jsonrpc": "2.0",
+      "method": "ethercat.slave.enable_ain",
+      "params": {
+          "position": 1,
+          "channel": 2,
+      }
+    }
 
 ## Motion planning API
 
