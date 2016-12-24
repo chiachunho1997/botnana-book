@@ -229,7 +229,7 @@ Botnana Control 若回傳資料，格式一律為
       }
     }
 
-## Motion planning API
+## Real-time Programming API
 
 TODO
 
@@ -242,7 +242,7 @@ Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來
       "jsonrpc": "2.0",
       "method": "motion.evaluate",
       "params": {
-        "script": "1 33 homing-method!"        
+        "script": "33 1 homing-method!"        
       }
     }
 

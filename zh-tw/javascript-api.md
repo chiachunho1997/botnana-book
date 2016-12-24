@@ -167,11 +167,73 @@ Botnana Control 回傳資料的格式為
     botnana.ethercat.slave(1).disable_ain(2);
     botnana.ethercat.slave(1).enable_ain(2);
 
+## Real-time Programming API
+
+一個最簡單的 real-time 程式：
+
+    var p1 = new botnana.Program("p1");
+    p1.deploy();
+    p1.run();
+
+* `deploy()`: 將程式部署至 real-time thread。
+* `run()`: 執行已部署的程式。
+
+移除所有程式：
+
+    botnana.remove_all_programs();
+
+範例：執行時會先單軸回 Home，然後再移動到位置 30000 的程式：
+
+    var p2 = new botnana.Program("p2");
+    var s1 = p2.ethercat.slave(1);
+    s1.hm();
+    s1.move_to(30000);
+    p2.deploy();
+    p2.run();
+
+範例：執行時會先雙軸回 Home，再移動到位置 (30000,40000) 的程式：
+
+    var p3 = new botnana.Program("p3");
+    var s1 = p3.ethercat.slave(1);
+    var s2 = p3.ethercat.slave(2);
+    s1.hm();
+    s2.hm();
+    s1.go();
+    s2.go();
+    s1.pp();
+    s2.pp();
+    s1.move_to(30000);
+    s2.move_to(40000);
+    s1.go();
+    s2.go();
+    p3.deploy();
+    p3.run();
+
+以下程式使用 until-target-reached 使得先走完第一軸再走第二軸：
+
+    var p4 = new botnana.Program("p4");
+    var s1 = p3.ethercat.slave(1);
+    var s2 = p3.ethercat.slave(2);
+    s1.hm();
+    s2.hm();
+    s1.go();
+    s1.until_target_reached();
+    s2.go();
+    s1.pp();
+    s2.pp();
+    s1.move_to(30000);
+    s1.go();
+    s1.until_target_reached();
+    s2.move_to(40000);
+    s2.go();
+    p4.deploy();
+    p4.run();
+
 ## Low-level Real-time Script API
 
 Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來滿足更複雜的程式需求。以下為使用 Real-time script 設定 Slave 1 回歸原點方法的 Javascript 命令。一般使用者並不需要使用此一 API。
 
-    botnana.motion.evaluate("1 33 homing-method!");
+    botnana.motion.evaluate("33 1 homing-method!");
 
 Realt-ime script 的指令集請見 [Real-time script API](./real-time-script-api.md)
 
