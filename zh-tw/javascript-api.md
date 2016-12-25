@@ -228,27 +228,3 @@ Botnana Control 回傳資料的格式為
     s2.go();
     p4.deploy();
     p4.run();
-
-## Low-level Real-time Script API
-
-Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來滿足更複雜的程式需求。以下為使用 Real-time script 設定 Slave 1 回歸原點方法的 Javascript 命令。一般使用者並不需要使用此一 API。
-
-    botnana.motion.evaluate("33 1 homing-method!");
-
-Realt-ime script 的指令集請見 [Real-time script API](./real-time-script-api.md)
-
-## Hidden API
-
-Hidden API 是一群用於 Javascript API 內部實作用的函式，在未來很可能會改變作法，不建議一般使用者使用。
-
-### 取得 slaves 資訊
-
-    botnana._.get_slaves();
-
-以下範例取得 Slave 總數
-
-    botnana.on("slaves", function(slaves) {
-        let s = slaves.split(",");
-        console.log("slave counts: " + s.length/2);
-    })
-    botnana._.get_slaves();

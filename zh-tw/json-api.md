@@ -232,18 +232,3 @@ Botnana Control 若回傳資料，格式一律為
 ## Real-time Programming API
 
 TODO
-
-## Low-level Real-time Script API
-
-Botnana Control 在其 real-time event loop 提供特殊的 Real-time script 來滿足更複雜的程式需求。以下為 Real-time script 設定 Slave 1 回歸原點方法的 JSON 命令。注意 `target` 為 `motion`。對 Realt-time script 更詳細的描述請見 [Real-time script API](./real-time-script-api.md)。
-一般使用者並不需要使用此一 API。
-
-    {
-      "jsonrpc": "2.0",
-      "method": "motion.evaluate",
-      "params": {
-        "script": "33 1 homing-method!"        
-      }
-    }
-
-Realt-ime script 的指令集請見 [Real-time script API](./real-time-script-api.md)
