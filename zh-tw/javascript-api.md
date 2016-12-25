@@ -178,9 +178,9 @@ Botnana Control 回傳資料的格式為
 * `deploy()`: 將程式部署至 real-time thread。
 * `run()`: 執行已部署的程式。
 
-移除所有程式：
+清除所有已部署的程式：
 
-    botnana.remove_all_programs();
+    botnana.empty();
 
 範例：執行時會先單軸回 Home，然後再移動到位置 30000 的程式：
 
