@@ -228,7 +228,3 @@ Botnana Control 若回傳資料，格式一律為
           "channel": 2,
       }
     }
-
-## Real-time Programming API
-
-TODO

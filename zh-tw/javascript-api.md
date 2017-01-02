@@ -25,10 +25,10 @@
     // be 'ws://localhost:3012'.
     botnana.start('ws://192.168.7.2:3012');
 
-## Start 和 Ready
+## Start、Ready and Poll
 
 程式使用 `botnana.start(ip_address)` 連上位於 `ip_address` 的 Botnana Control。Ready 事件代表已經連上並建立基本資料，
-可以開始處理之後函式內的工作。
+可以開始處理之後函式內的工作。`botnana.start` 同時會起動輪詢機制，每 100 ms 輪詢 Botnana Control 的回應。
 
     botnana.on("ready", function() {
         // 工作 1
@@ -173,9 +173,12 @@ Botnana Control 回傳資料的格式為
 
     var p1 = new botnana.Program("p1");
     p1.deploy();
-    p1.run();
+    // 當完成部署時執行程式。
+    botnana.on("deployed", function() {
+        p1.run();
+    })
 
-* `deploy()`: 將程式部署至 real-time thread。
+* `deploy()`: 將程式部署至 real-time thread。當完成部署時，會發出事件 `deployed`。
 * `run()`: 執行已部署的程式。
 
 清除所有已部署的程式：
@@ -189,7 +192,9 @@ Botnana Control 回傳資料的格式為
     s1.hm();
     s1.move_to(30000);
     p2.deploy();
-    p2.run();
+    botnana.on("deployed", function() {
+        p2.run();
+    });
 
 範例：執行時會先雙軸回 Home，再移動到位置 (30000,40000) 的程式：
 
@@ -207,7 +212,9 @@ Botnana Control 回傳資料的格式為
     s1.go();
     s2.go();
     p3.deploy();
-    p3.run();
+    botnana.on("deployed", function() {
+        p3.run();
+    });
 
 以下程式使用 until-target-reached 使得先走完第一軸再走第二軸：
 
@@ -227,4 +234,6 @@ Botnana Control 回傳資料的格式為
     s2.move_to(40000);
     s2.go();
     p4.deploy();
-    p4.run();
+    botnana.on("deployed", function() {
+        p4.run();
+    });
