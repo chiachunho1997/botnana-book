@@ -216,7 +216,7 @@ Botnana Control 回傳資料的格式為
         p3.run();
     });
 
-以下程式使用 until-target-reached 使得先走完第一軸再走第二軸：
+以下程式使用 `until_target_reached()` 使得先走完第一軸再走第二軸：
 
     var p4 = new botnana.Program("p4");
     var s1 = p3.ethercat.slave(1);
