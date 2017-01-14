@@ -4,15 +4,11 @@ Botnana Control Motion Server 的設定檔位於 /opt/mapacode/botnana-control/c
 
 設定檔使用 [Toml](https://github.com/toml-lang/toml) 格式。說明如下。
 
-### file section
+### File section
 
 * _spec_version_ 欄位：列出使用的設定檔格式的版本，本文件目前的版本是 0.0.1。
 
-### server section
-
-* _address_ 欄位：motion server 的 websocket 位置。不寫時預設的位置為 192.168.7.2:3012。
-
-### slave section
+### Slave section
 
 可以有多個 slaves，因此使用 `[[slave]]`。每個 slave 有以下欄位。
 
@@ -32,8 +28,6 @@ Botnana Control Motion Server 的設定檔位於 /opt/mapacode/botnana-control/c
 
     [file]
       spec_version = "0.0.1"
-    [server]
-      address = "192.168.7.2:3012"
     [[slave]]
       position = 1
       vendor_id = 6661
