@@ -16,7 +16,7 @@
         console.log("version: " + version);
     })
 
-    botnana.on("ready", function() {
+    botnana.once("ready", function() {
         botnana.version.get();
     });
 
@@ -30,7 +30,7 @@
 程式使用 `botnana.start(ip_address)` 連上位於 `ip_address` 的 Botnana Control。Ready 事件代表已經連上並建立基本資料，
 可以開始處理之後函式內的工作。`botnana.start` 同時會起動輪詢機制，每 100 ms 輪詢 Botnana Control 的回應。
 
-    botnana.on("ready", function() {
+    botnana.once("ready", function() {
         // 工作 1
         // 工作 2
         // ...
@@ -62,6 +62,18 @@ Botnana Control 回傳資料的格式為
         console.log("dout 1 of slave 2 is " + value);
     });
 
+如果只處理一次事件，使用 `once`。例如：
+
+    botnana.once("dout.2.1", function (value) {
+        console.log("dout 1 of slave 2 is " + value);
+    });
+
+也可以使用 times 指定處理事件的次數。例如：
+
+    botnana.times("dout.2.1", function (value) {
+        console.log("dout 1 of slave 2 is " + value);
+    }, 5);
+
 ## Version API
 
 範例：
@@ -69,7 +81,7 @@ Botnana Control 回傳資料的格式為
     botnana.on("version", function (version) {
         console.log("version: " + version);        
     });
-    botnana.on("ready", function() {
+    botnana.once("ready", function() {
         botnana.version.get();
     })
 
@@ -117,7 +129,7 @@ Botnana Control 回傳資料的格式為
     botnana.on("homing_method.1", function (homing_method) {
         console.log("result: " + homing_method);
     });
-    botnana.on("ready", function() {
+    botnana.once("ready", function() {
         botnana.ethercat.slave(1).get();
     });
 
@@ -151,7 +163,7 @@ Botnana Control 回傳資料的格式為
     botnana.on("ain.4.2", function (value) {
         console.log("ain 2 of slave 2 is " + value );
     });
-    botnana.on("ready", function() {
+    botnana.once("ready", function() {
         botnana.ethercat.slave(1).set_dout{1, 1);
         botnana.ethercat.slave(3).set_aout(1, 30);
         botnana.ethercat.slave(1).get();
@@ -174,7 +186,7 @@ Botnana Control 回傳資料的格式為
     var p1 = new botnana.Program("p1");
     p1.deploy();
     // 當完成部署時執行程式。
-    botnana.on("deployed", function() {
+    botnana.once("deployed", function() {
         p1.run();
     })
 
@@ -192,7 +204,7 @@ Botnana Control 回傳資料的格式為
     s1.hm();
     s1.move_to(30000);
     p2.deploy();
-    botnana.on("deployed", function() {
+    botnana.once("deployed", function() {
         p2.run();
     });
 
@@ -212,7 +224,7 @@ Botnana Control 回傳資料的格式為
     s1.go();
     s2.go();
     p3.deploy();
-    botnana.on("deployed", function() {
+    botnana.once("deployed", function() {
         p3.run();
     });
 
@@ -234,6 +246,6 @@ Botnana Control 回傳資料的格式為
     s2.move_to(40000);
     s2.go();
     p4.deploy();
-    botnana.on("deployed", function() {
+    botnana.once("deployed", function() {
         p4.run();
     });
