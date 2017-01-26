@@ -1,18 +1,20 @@
-## 設定檔
+## Configuration File
 
-Botnana Control Motion Server 的設定檔位於 /opt/mapacode/botnana-control/config/motion.toml 。
+Botnana Control Motion Server's configuration file is placed at: 
+`/opt/mapacode/botnana-control/config/motion.toml`
 
-設定檔使用 [Toml](https://github.com/toml-lang/toml) 格式。說明如下。
+The config file uses [Toml](https://github.com/toml-lang/toml) format.
 
 ### File section
 
-* _spec_version_ 欄位：列出使用的設定檔格式的版本，本文件目前的版本是 0.0.1。
+* _spec_version_ column: Prints the version number of the config file, 
+the current version is 0.0.1.
 
 ### Slave section
 
-可以有多個 slaves，因此使用 `[[slave]]`。每個 slave 有以下欄位。
+Multiple slaves can be owned, hence use `[[slave]]`. Every slave has the following columns:
 
-* _position_: slave 的位置。
+* _position_: Position of slave.
 * _vendor_id_
 * _product_code_
 * _homing_method_

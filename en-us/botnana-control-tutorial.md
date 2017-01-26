@@ -1,19 +1,26 @@
-## Botnana Control 入門
+## Botnana Control Tutorial
 
-Botnana A2 預設於開機時自動啟動動程科技的 Botnana Control P2P 軸控軟體。此一軸控軟體安裝於 `/opt/mapacode/botnana-control`。
+Botnana Control Introduction
 
-因此，使用瀏覽器連上 http://192.168.7.2:3000 。可見到以下畫面。
+By default, Botnana A2 launches Botnana Control P2P Axes control software, by MAPACODE INC, on startup. 
+Installed at `/opt/mapacode/botnana-control`
+
+Accessing http://192.168.7.2:3000 with the browser will show you this screen:
 
 ![Botnana Controlsheet](./botnana-control-controlsheet.png)
 
-如果 Botnana A2 上未安裝 Botnana Control P2P，可以以下列方式安裝：
+If your Botnana A2 does not have Botnana Control P2P installed, 
+you can install it with the following command:
 
     dpkg -i botnana-control_0.0.1-1_armhf.deb
 
-解安裝請執行
+Uninstall  with the following command:
 
     dpkg -r botnana-control
 
 ### Configuration
 
-請參考 [設定檔](./configuration-file.md) 章節，若無必要，請勿手動修改設定檔。
+Please refer to [Configuration File](./configuration-file.md) chapter. 
+ONLY edit the configuration file when in need.
+
+// Edit the configuration file carefully

@@ -1,41 +1,46 @@
-# 軟體規格
+# Software Specification
 
-霸蕉控制器出廠時預裝以下開源軟體，
+Botnana A2 comes with the following FOSS programs:
 
 * Debian Linux
 * IgH EtherCAT Master for Linux
 * nodejs
 
-以及動程科技自行開發的
+Plus an original program by MAPACODE INC:
 
-* Botnana Control P2P: 針對 EtherCAT 以及工業物聯網運用開發的多軸控制軟體。
+* Botnana Control P2P: An axes contorl program written for EtherCAT and IIoT (Industrial Internet of Things).
 
-## 軸控軟體
+## Axes Control Program
 
-軸控軟體 Botnana Control 分三個等級。Botnana A2 出廠時預裝的是等級一的 Botnana Control P2P。
+Botnana Control, an original axes contorl program, has 3 different levels.
+Original Botnana A2 comes with level 1 Botnana Control P2P.
 
-所有等級的 Botnana Control 都支援以下規格：
+All levels of Botnana Control supports the following //hardware standards
 
-* EtherCAT 非同動軸可達 1-32 軸以上。
-* 支援 Panasonic 及 Delta 的 EtherCAT 馬達驅動器，其他廠牌的驅動器正開發中。
-* 支援 Delta 的類比及數位輸出入模組。未來將支援 Beckhoff 及其他廠牌的 EtherCAT 模組。
+* EtherCAT /非同動軸 up to 32 axes.
+* Panasonic and Delta's EtherCAT motor drive,
+support for other motor drive are currently under development.
+* Delta's analogue and digital output module. 
+Will support Beckhoff and other manufacturer's EtherCAT modules.
 
-### 等級一：Botnana Control P2P，點到點軸控、監控
+### Level 1: _Botnana Control P2P_, point-to-point control and monitoring
 
 * 系統掃描與設定軟體，自動偵測 EtherCAT 從站。
-* 軸控及監控軟體。支援 EtherCAT 馬達驅動器的 hm 及 pp 模式，可進行原點回歸及點到點運動。
+* Axes contorl and monitoring.
+* Supports EtherCAT motor drive's _hm_ and _pp_ operation.
+* Conduct point-to-point and reset operation.
 
-### 等級二：Botnana Control Profiling：三軸同動軸控、監控
+### Level 2: _Botnana Control Profiling_: 3 axis /同動軸控, monitoring
 
-* 包含等級一 Botnana Control P2P 全部功能。
-* Real-time extenstion (Xenomai)
-* 支援 Modbus。
+* Includes level 1 _Botnana Control P2P_ utilities.
+* Real-time extenstion (Xenomai).
+* Supports Modbus.
 * 可進行三軸同動及直線圓弧補間。補間支援具 pp 模式的馬達驅動器。
 
-### 等級三：Botnana Control CNC：CNC 控制器，三、四軸至六軸同動及多軸組控制器
+### Level 3: _Botnana Control CNC_：CNC controller, 3 to 6 axes軸同動及多軸組控制器
 
-* 包含等級二 Botnana Control Profiling 全部功能。
+* Includes level 2 _Botnana Control Profiling_ utilities.
 * 工件程式解譯器
-* CNC 人機界面
+* CNC /Human-Computer Interaction.
 
 並可依客戶需求特製四至六軸同動、多軸組、雷射及相機觸發等特殊控制器。

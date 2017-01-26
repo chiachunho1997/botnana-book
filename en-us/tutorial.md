@@ -1,1 +1,1 @@
-# 入門教學 (Tutorial)
+# Tutorial

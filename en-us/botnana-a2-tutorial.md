@@ -1,14 +1,16 @@
-## Botnana A2 入門
+## Botnana A2 Tutorial
 
 --------------------
-### 登入
+### Login
 
-使用 micro USB 連結到電腦的 USB port，再以 ssh 登入，
+Connect Botnana A2 to your computer using a micro USB cable, then login with ssh:
 
     ssh 192.168.7.2
 
-使用者名稱為 debian，password 為 temppwd。
+Username: debian
 
-如果有必要切換使用者為 root，可執行
+password: temppwd
+
+To switch to root user: 
 
     sudo su

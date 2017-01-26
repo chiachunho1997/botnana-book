@@ -1,16 +1,19 @@
-# 簡介
+# Introduction
 
-霸蕉控制器 (Botnana Control) 是一款工業以太網 EtherCAT 控制器的快速開發以及學習環境。目標是幫使用者快速開發以工業以太網 EtherCAT 為基礎的自動控制以及工業物聯網應用。
+Botnana Control is an Industrial Ethernet EtherCAT controller’s rapid development and learning environment. 
+The goal of Botnana Control is to help users rapidly develop automation 
+and IIoT (Industrial Internet of Things) applications based on Industrial Ethernet.
 
-![霸焦控制器](./botnana-a2-in-box.png)
+![Botnana Control](./botnana-a2-in-box.png)
 
-## 應用領域
+## Applicable Field
 
-霸蕉控制器軟體適合以下應用
+Botnana Control can be utilized for following applications:
 
-* 資料收集：做為 Remote Control Unit (RTU) 使用。
-* 資料分析：透過內建類似試算表的工具及其語言 Javascript，分析收集到的資料。
-* 軸控：可透過 EtherCAT 控制 1-32 軸以上的馬達。目前已支援台達電、Panasonic 的 EtherCAT 馬達驅動器，未來將支援 Coply、Sanyo Denki 以及 Yaskawa EtherCAT 的驅動器，以及接收脈波輸入的驅動器。
-* 類 PLC 控制：可透過 EtherCAT IO 模組進行類似 PLC 的控制，目前支援台達電及 Beckhoff 的 IO 模組。
-* 雲端及使用者 HMI 整合：透過內建的 websocket 伺服器，和客戶的雲端服務或 HMI 整合。
-* CNC 控制器。
+* Data collection: For use with Remote Terminal Unit (RTU).
+* Data analysis: Analyze collected data with built-in spreadsheet and Javascript.
+* Motion control: Up to 32 axes can be controlled with EtherCAT through Botnana Control. Currently supports Delta and Panasonic’s EtherCAT motor.
+ Will support Coply, Sanyo Denki and Yaskawa EtherCAT’s motor and pulse input modules.
+* PLC-like control: Botnana can utilize EtherCAT module and conduct PLC-like control. Currently support Delta and Beckhoff’s IO module.
+* Cloud and user HMI integration: Utilizing built-in websocket server and client’s cloud service or HMI integration.
+* CNC controller

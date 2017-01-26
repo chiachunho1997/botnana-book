@@ -1,20 +1,20 @@
-# 已知可支援的硬體清單
+# List of known compatable hardware
 
 ## WiFi Adapters
 
 * D-Link DWA-171
 * D-Link DWA-172
 
-## EtherCAT Slave 清單
+## EtherCAT Slave
 
-目前 Botnana Control 支援以下 EtherCAT Slaves：
+Currently Botnana Control supports following EtherCAT Slaves:
 
 ### Beckhoff
 
 * EL1088, 8-channel digital input terminal 24 V DC, negative switching
 * EL2088, 8-channel digital output terminal 24 V DC, negative switching
 
-### 台達電 (Delta)
+### Delta
 
 * ASDA-A2-E, EtherCAT(CoE) Drive
 * R1-EC5500, EtherCAT to E-BUS power module
