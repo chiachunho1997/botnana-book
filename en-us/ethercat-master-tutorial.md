@@ -1,36 +1,41 @@
-## EtherCAT Master Tutorial
+## EtherCAT Master 入門
 
-### Advises for self-taught EtherCAT
+### 自學 EtherCAT 建議
 
-_Botnana A2_ comes preinstalled with _IgH EtherCAT Master for Linux. But software development using EtherCAT master is not a simple task. Therefore, Botnana A2 comes with a built in solution _Botnana Control_.
+_Botnana A2_ 預裝 _IgH EtherCAT Master for Linux_。但是要以這個 EtherCAT master 開發軟體並不是一件容易的事，因此 Botnana A2 還內建了動程科技自行開發的 _Botnana Control_。
 
-Following tips and sites are for in case you do not want ot rely on _Botnana Control_, want to teach yourself EtherCAT, or even build your own contorl system.
+以下說明如果您想不依賴 _Botnana Control_，自行學習 EtherCAT 甚至建立自己的控制系統，可參考的文件，以及自學步驟：
 
-* Read _IgH EtherCAT Master_ manual. The end of this chapter will provide a quick guide for using _IgH EtherCAT Master_.
-* Understand what _CANopen_ is. Websites for reference: [CANopen Basics](http://www.canopensolutions.com/english/about_canopen/about_canopen.shtml), read up on _object dictionary_, _PDO_, and _SDO_ concepts.
-* EtherCAT Master uses _CANopen over EtherCAT_ to conduct IO and motor/ drive controller. CANopen standard used are _DSP401_ and _DSP402_. The two documents can be found on the web. You can also download Copley or Elmo's motor drive manual for reference.
-* When controlling motors, we recommend your motor drive's state machine. The state machine descrives everything from power suppply to operation enabled, and the _Control Word_.
-* Then understand the several operation mode of your motor when it's operation enabled. The most basic ones are _pp_ and _hm_ mode. We recommend starting from _pp_ mode.
-    * _pp_: Point to point motion. This mode does not require immediate OS support.
-    * _hm_: Home seeking operation. 又依有沒有 limit switches 及回歸原點的方向分成多數子模式。This mode does not require real-time OS support.
+* 閱讀 _IgH EtherCAT Master_ 的手冊。本文後面章節會簡單說明如何使用 _IgH EtherCAT Master_。
+* 瞭解什麼是 _CANopen_。可以參考 [CANopen Basics](http://www.canopensolutions.com/english/about_canopen/about_canopen.shtml)，尤其要瞭解 _object dictionary_，_PDO_ 及 _SDO_ 的概念。
+* EtherCAT Master 透過 _CANopen over EtherCAT_ 這協定進行 IO 及馬達驅動器控制。參考的 CANopen 標準是 _DSP401_ 及 _DSP402_。請透過網路找到這兩份文件。也可以下載 Copley 或 Elmo 的馬達驅動器說明文件作為參考。
+* 控制馬達時，建議先瞭解馬達驅動器的有限狀態機 (state machine)。這有限狀態機描述了從馬達驅動器供電到操作致能 (_Operation Enabled_) 的過程，以及你所需下達的 _Control Word_ 命令。
+* 再來要瞭解的就是在馬達驅動器的操作致能狀態 (_Operation Enabled_) 中的數種操作模式 (_Operation Mode_)。最基本的有 _pp_、_hm_ 模式。建議先從 _pp_ 模式開始瞭解。
+    * _pp_ : 點到點運動。此一模式並不需要即時作業系統支援。
+    * _hm_ : 回歸原點。又依有沒有 limit switches 及回歸原點的方向分成多數子模式。此一模式並不需要即時作業系統支援。
 
-Another way to learn is through Botnana Control. Botnana Control is expected to launch basic _Botnana Control P2P_, supporting _pp_ and _hm_ operation, in 2016-11-30. And in 2016-11-30, release an advanced version _Botnana Control Profiling_, supporting 即時作業系統及直線圓弧插補功能.
+另一種學習方式是使用 Botnana Control 來學習。Botnana Control 預計在 2016-10-31 正式推出支援 _pp_ 及 _hm_ 模式的基本款 _Botnana Control P2P_。在 2016-11-30 推出對即時作業系統及直線圓弧插補功能的進階版本 _Botnana Control Profiling_。
 
-### Launch, check status, and stop EtherCAT Master
-By default Botnana Control will automatically launch EtherCAT master. The following are steps for manual start and stop:
+### 起動，檢查狀態及停止 EtherCAT Master
 
-IgH EtherCAT Master is installed under `/opt/etherlab` directory.
+Botnana Control 在出廠時已預設自動起動 EtherCAT master。以下說明手動起動及停止的作法。
 
-Following are basic operations:
+IgH EtherCAT Master 被安裝在 `/opt/etherlab` 目錄下。
+
+以下是幾個基本操作：
 
     service ethercat start
     service ethercat status
     service ethercat stop
 
-If your wish to automatically launch EtherCAT master:
+如果希望每次開機時會自動執行 EtherCAT master:
 
     update-rc.d ethercat defaults
 
-###check the status of EtherCAT and slaves
+若不希望自動執行：
 
-TODO, Please check IgH EtherCAT master's manual.
+    update-rc.d ethercat remove
+
+### 檢查 EtherCAT master 及 slaves 的狀態
+
+TODO, Please check IgH EtherCAT master's manual。

@@ -1,14 +1,13 @@
 # Javascript API
 
-When using nodejs:
+使用 nodejs 時：
 
     var botnana = require("botnana");
 
-`botnana` library can also execute in a browser.
+`botnana` 函式庫亦可在瀏覽器執行。
 
-## Examples
+## 範例
 
-Using 
 以下範例使用 Websocket 連上 Botnana Control 後取得 Botnana Control 的版本：
 
     var botnana = require("botnana");

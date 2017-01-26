@@ -1,8 +1,8 @@
 # JSON API
 
-Botnana Control's JSON API uses [JSON-RPC 2.0](http://www.jsonrpc.org/specification) 。
+Botnana Control 的 JSON API 採用 [JSON-RPC 2.0](http://www.jsonrpc.org/specification) 。
 
-Programs can use JSON format to communicatw with Botnana Control. This method suits languages that supports JSON format and contain Websocket library. e.g:
+程式可以使用 JSON 格式和 Botnana Control 溝通。此一方法適用於各種支援 JSON 格式且具有 Websocket 函式庫的語言，例如：
 
 * Java
 * C#
@@ -11,41 +11,41 @@ Programs can use JSON format to communicatw with Botnana Control. This method su
 * Ruby
 * Go
 
-The following languages supports JSON. But we recommend using APIs provided by Botnana Contorl:
+以下程式語言雖然支援 JSON，但建議使用 Botnana Control 另行提供的 APIs：
 
 * [Javascript API](./javascript-api.md)
 
 
-## Data return format/回傳資料格式
+## 回傳資料格式
 
-If Botnana Control returns data, the format will be:
+Botnana Control 若回傳資料，格式一律為
 
     tag1|value1|tag2|value2...
 
-Note: Data return is not in JSON format.
+注意回傳格式不是 JSON 格式。
 
 ## Version API
 
-Programs can use Version API to obtain the version of Botnana Control.
+程式可以使用 Version API 取得 Botnana Control 的版本。
 
     {
       "jsonrpc": "2.0",
       "method": "version.get"
     }
 
-will return the following line：
+會回傳以下字串：
 
     version|1.0.0
 
 ## Configuration API
 
-Programs can use Configuration API to process parameter in configuration file. The configuration of parameter takes effect after a reboot or 重新讀取參數檔.
+程式可以使用 Configuration API 來處理參數設定檔。參數檔的設定，在重開機或重新讀取參數檔後生效。
 
-### Editing parameter configuration/修改設定參數
+### 修改設定參數
 
-Editing the configuration file will not be immediately saved to the configuration file, and will not affecet the parameters currently in use by devices.
+修改設定參數並不會立刻將設定值儲存至參數設定檔，也不會影響到各裝置目前使用的參數。
 
-e.g.: Editing slave 1's homing method
+範例：修改 slave 1 的回歸原點方法。
 
     {
       "jsonrpc": "2.0",
@@ -57,13 +57,13 @@ e.g.: Editing slave 1's homing method
       }
     }
 
-### Saving parameter configuration/儲存設定參數
+### 儲存設定參數
 
-Saving parameter configuration will immediately save set value to parameter configuration file. But will not affect parameter currently in use.
+儲存設定參數會立刻將設定值儲存至參數設定檔，但不會影響到各裝置目前使用的參數。
 
-After restart, the system will use the new configuration.
+關機再開後系統會使用新的設定。
 
-e.g.: Request saving configuration：
+範例：要求儲存 configuration：
 
     {
       "jsonrpc": "2.0",
@@ -72,11 +72,10 @@ e.g.: Request saving configuration：
 
 ## Slave API
 
-### Reading Slave status
+### 讀取 Slave 狀態
 
-User can use get to obtian all parameters. Using `get_diff` obtains the last modified status from executing `get`. / 使用 get_diff 取得自行 上次執行 get 後被 改變的狀態。
-
-If parameter has not changed , return value will be a blank string. /回傳資料為空字串。
+使用者可以使用 get 取得所有參數。使用 get_diff 取得自行上次執行 get 後被改變的狀態。
+如果上次執行 get 後狀態都沒有改變，回傳資料為空字串。
 
     {
       "jsonrpc": "2.0",

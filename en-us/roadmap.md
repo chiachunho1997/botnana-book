@@ -6,7 +6,7 @@
     * Javascript API
 * Botnana Control Profiling (level 2), 2016/12/31
     * Real-time kernel
-    * Linear, arc interpolation /直線、圓弧插值
+    * 直線、圓弧插值
 * Botnana Control CNC (level 3), 2017/3/31
-    * CNC Human-Computer Interaction
+    * CNC 人機界面
     * 工件程式解譯
