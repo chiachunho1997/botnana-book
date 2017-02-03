@@ -17,7 +17,7 @@ The following language supports JSON. But we recommend using APIs provided by Bo
 * [Javascript API](./javascript-api.md)
 
 
-## Data return format/回傳資料格式
+## Return data format/回傳資料格式
 
 The format of data returned by Botnana Control:
 
@@ -99,7 +99,7 @@ If parameter has not changed, return value will be a blank string. /回傳資料
       }
     }
 
-驅動器回傳資料範例，
+Motor drive return data example //驅動器回傳資料範例，
 
     vendor.1|Panasonic|product.1|MBDHT|control_word.1|0|status_word.1|1616|
     pds_state.1|Switch On Disabled|pds_goal.1|Switch On Disabled|
@@ -108,41 +108,41 @@ If parameter has not changed, return value will be a blank string. /回傳資料
     homing_speed_2.1|250|homing_acceleration.1|500|
     profile_velocity.1|500000|profile_acceleration.1|200|profile_deceleration.1|200
 
-其中的 `.1` 代表資料來自位置為 1 的 slave。
+`.1` means data returned from slave 1 //其中的 `.1` 代表資料來自位置為 1 的 slave。
 
-數位輸出回傳資料範例，以台達電 EC7062 為例：
+Digital output return data example, using Delta EC7062 as example: //數位輸出回傳資料範例，以台達電 EC7062 為例：
 
     vendor.3|Delta|product.3|EC7062|dout.3.1|0|dout.3.2|0|dout.3.3|0|
     dout.3.4|0|dout.3.5|0|dout.3.6|0|dout.3.7|0|dout.3.8|0|dout.3.9|0|
     dout.3.10|0|dout.3.11|0|dout.3.12|0|dout.3.13|0|dout.3.14|0|
     dout.3.15|0|dout.3.16|0
 
-其中的 dout.3.11 代表是第三個 Slave 的第 11 個數位輸出。
+`dout.3.11` means the 11th digital output from the thrid slave //其中的 dout.3.11 代表是第三個 Slave 的第 11 個數位輸出。
 
-數位輸入回傳資料範例，以台達電 EC6022 為例：
+Digital input return data example, using Delta EC6022 as example: //數位輸入回傳資料範例，以台達電 EC6022 為例：
 
     vendor.7|Delta|product.7|EC6022|din.7.1|0|din.7.2|0|din.7.3|0|
     din.7.4|0|din.7.5|0|din.7.6|0|din.7.7|0|din.7.8|0|din.7.9|0|
     din.7.10|0|din.7.11|0|din.7.12|0|din.7.13|0|din.7.14|0|din.7.15|0|
     din.7.16|0
 
-其中的 dout.7.15 代表是第七個 Slave 的第 15 個數位輸入。
+`dout.7.15` means the 15th digital input from the 7th slave  //其中的 dout.7.15 代表是第七個 Slave 的第 15 個數位輸入。
 
-類比輸出回傳資料範例，以台達電 EC9144 為例：
+Analogue output return data example, using Delta EC9144 as example: //類比輸出回傳資料範例，以台達電 EC9144 為例：
 
     vendor.5|Delta|product.5|EC9144|aout.5.1|0|aout.5.2|0|
     aout.5.3|0|aout.5.4|0
 
-類比輸入回傳資料範例，以台達電 EC8124 為例：
+Analogue input return data example, using Delta EC8124 as example: //類比輸入回傳資料範例，以台達電 EC8124 為例：
 
     vendor.4|Delta|product.4|EC8124|ain.4.1|0|ain.4.2|0|
     ain.4.3|0|ain.4.4|0
 
-### 設定馬達驅動器參數
+### Configuring motor drive parameters //設定馬達驅動器參數
 
-和設定檔的 API 不同，此法設定的參數會立即生效。
+As opposed to configuration file's API, this parameter configuration takes effect immediately. //和設定檔的 API 不同，此法設定的參數會立即生效。
 
-馬達驅動器部份目前提供以下參數：
+Motor drive currently provides the following parameters //馬達驅動器部份目前提供以下參數：
 
 * `homing_method`
 * `home_offset`
@@ -153,7 +153,7 @@ If parameter has not changed, return value will be a blank string. /回傳資料
 * `profile_acceleration`
 * `profile_deceleration`
 
-使者用可以使用 set 命令設定這些參數。
+User can use `set` command to alter the parameters //使者用可以使用 set 命令設定這些參數。
 
     {
       "jsonrpc": "2.0",
@@ -165,9 +165,9 @@ If parameter has not changed, return value will be a blank string. /回傳資料
       }
     }
 
-### 清除馬達驅動器異警
+### Clear motor drive alert //清除馬達驅動器異警
 
-範例，清除第一個 Slave 的異警：
+e.g. clear the first slave's alert //範例，清除第一個 Slave 的異警：
 
     {
       "jsonrpc": "2.0",
@@ -177,7 +177,7 @@ If parameter has not changed, return value will be a blank string. /回傳資料
       }
     }
 
-### 設定 IO 點狀態
+### Configuring IO point status //設定 IO 點狀態
 
     {
       "jsonrpc": "2.0",

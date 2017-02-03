@@ -1,6 +1,6 @@
 # Software Specification
 
-Botnana A2 comes with the following FOSS programs:
+Botnana A2 comes with the following FOSS (Free and Open Source Software):
 
 * Debian Linux
 * IgH EtherCAT Master for Linux

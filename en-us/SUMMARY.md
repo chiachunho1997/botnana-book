@@ -10,7 +10,7 @@
     - [EtherCAT Master Tutorial](./ethercat-master-tutorial.md)
     - [Botnana Control Tutorial](./botnana-control-tutorial.md)
 - [Configuration File](./configuration-file.md)
-- [程式開發界面](programming.md)
+- [Application Programming Interface](programming.md)
     - [JSON API](./json-api.md)
     - [Javascript API](./javascript-api.md)
 - [List of known compatable](./known-working-hardware.md)

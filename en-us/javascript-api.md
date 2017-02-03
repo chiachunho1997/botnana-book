@@ -8,7 +8,7 @@ While using nodejs:
 
 ## Examples
 
-以下範例使用 Websocket 連上 Botnana Control 後取得 Botnana Control 的版本：
+Following example uses Websocket to connect to Botnana Contorl, then obtains the version of Botnana Control //以下範例使用 Websocket 連上 Botnana Control 後取得 Botnana Control 的版本：
 
     var botnana = require("botnana");
 
