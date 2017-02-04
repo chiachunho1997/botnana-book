@@ -17,7 +17,7 @@ The following language supports JSON. But we recommend using APIs provided by Bo
 * [Javascript API](./javascript-api.md)
 
 
-## Return data format/回傳資料格式
+## Return data format //回傳資料格式
 
 The format of data returned by Botnana Control:
 
@@ -41,9 +41,9 @@ will return the following line：
 ## Configuration API
 
 Programs can use Configuration API to process parameter in configuration file. 
-Parameter configuration takes effect after a reboot or 重新讀取參數檔.
+Parameter configuration takes effect after a reboot or reread parameter file //重新讀取參數檔.
 
-### Editing parameter configuration/修改設定參數
+### Editing parameter configuration //修改設定參數
 
 Edits done to the configuration file will not immediately take effect, 
 and will not affect parameters currently in use by devices.
@@ -60,7 +60,7 @@ e.g.: Editing slave 1's homing method
       }
     }
 
-### Saving parameter configuration/儲存設定參數
+### Saving parameter configuration //儲存設定參數
 
 Saving parameter configuration will immediately save set value to parameter 
 configuration file. But will not affect parameter currently in use.
@@ -79,9 +79,9 @@ e.g.: Request saving configuration：
 ### Reading Slave status
 
 Use `get` to obtian all parameters. Use `get_diff` to obtain the last modified 
-value after using `get`. / 使用 get_diff 取得自行 上次執行 get 後被 改變的狀態。
+value after using `get`. //使用 get_diff 取得自行 上次執行 get 後被 改變的狀態。
 
-If parameter has not changed, return value will be a blank string. /回傳資料為空字串。
+If parameter has not changed, return value will be a blank string. //回傳資料為空字串。
 
     {
       "jsonrpc": "2.0",
