@@ -2,7 +2,7 @@
 
 Botnana Control's JSON API uses [JSON-RPC 2.0](http://www.jsonrpc.org/specification) 。
 
-Programs can use JSON format to communicatw with Botnana Control. 
+Programs can use JSON format to communicate with Botnana Control. 
 This method suits languages that supports JSON format and uses Websocket library. e.g.
 
 * Java
@@ -12,7 +12,7 @@ This method suits languages that supports JSON format and uses Websocket library
 * Ruby
 * Go
 
-The following language supports JSON. But we recommend using APIs provided by Botnana Contorl:
+The following language supports JSON. But we recommend using APIs provided by Botnana Control:
 
 * [Javascript API](./javascript-api.md)
 
@@ -78,7 +78,7 @@ e.g.: Request saving configuration：
 
 ### Reading Slave status
 
-Use `get` to obtian all parameters. Use `get_diff` to obtain the last modified 
+Use `get` to obtain all parameters. Use `get_diff` to obtain the last modified 
 value after using `get`. //使用 get_diff 取得自行 上次執行 get 後被 改變的狀態。
 
 If parameter has not changed, return value will be a blank string. //回傳資料為空字串。
@@ -99,7 +99,7 @@ If parameter has not changed, return value will be a blank string. //回傳資�
       }
     }
 
-Motor drive return data example //驅動器回傳資料範例，
+Motor drive return data example //驅動器回傳資料範例
 
     vendor.1|Panasonic|product.1|MBDHT|control_word.1|0|status_word.1|1616|
     pds_state.1|Switch On Disabled|pds_goal.1|Switch On Disabled|
@@ -117,7 +117,7 @@ Digital output return data example, using Delta EC7062 as example: //數位輸�
     dout.3.10|0|dout.3.11|0|dout.3.12|0|dout.3.13|0|dout.3.14|0|
     dout.3.15|0|dout.3.16|0
 
-`dout.3.11` means the 11th digital output from the thrid slave //其中的 dout.3.11 代表是第三個 Slave 的第 11 個數位輸出。
+`dout.3.11` means the 11th digital output from the third slave //其中的 dout.3.11 代表是第三個 Slave 的第 11 個數位輸出。
 
 Digital input return data example, using Delta EC6022 as example: //數位輸入回傳資料範例，以台達電 EC6022 為例：
 

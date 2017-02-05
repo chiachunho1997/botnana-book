@@ -9,4 +9,4 @@
     * Linear, arc interpolation /直線、圓弧插值
 * Botnana Control CNC (level 3), 2017/3/31
     * CNC Human-Computer Interaction
-    * 工件程式解譯
+    * Workpiece program interpretation //工件程式解譯

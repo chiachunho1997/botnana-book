@@ -13,7 +13,7 @@
 - [Application Programming Interface](programming.md)
     - [JSON API](./json-api.md)
     - [Javascript API](./javascript-api.md)
-- [List of known compatable](./known-working-hardware.md)
+- [List of known compatible](./known-compatible-hardware.md)
 
 -------------------------
 

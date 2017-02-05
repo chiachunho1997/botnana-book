@@ -8,7 +8,9 @@ While using nodejs:
 
 ## Examples
 
-Following example uses Websocket to connect to Botnana Contorl, then obtains the version of Botnana Control //以下範例使用 Websocket 連上 Botnana Control 後取得 Botnana Control 的版本：
+Following example uses Websocket to connect to Botnana Control, 
+then obtains the version of Botnana Control 
+//以下範例使用 Websocket 連上 Botnana Control 後取得 Botnana Control 的版本：
 
     var botnana = require("botnana");
 
@@ -27,12 +29,16 @@ Following example uses Websocket to connect to Botnana Contorl, then obtains the
 
 ## Start、Ready and Poll
 
-程式使用 `botnana.start(ip_address)` 連上位於 `ip_address` 的 Botnana Control。Ready 事件代表已經連上並建立基本資料，
+The program connects to Botnana Control at `ip_address` using `botnana.start(ip_address)`. 
+Ready event means you have connected to Botnana Control and 建立基本資料, and can start processing the function.
+`botnana.start` will automatically start the 輪詢機制, 輪詢 Botnana Control 的回應 every 100 ms.
+
+//程式使用 `botnana.start(ip_address)` 連上位於 `ip_address` 的 Botnana Control。Ready 事件代表已經連上並建立基本資料，
 可以開始處理之後函式內的工作。`botnana.start` 同時會起動輪詢機制，每 100 ms 輪詢 Botnana Control 的回應。
 
     botnana.once("ready", function() {
-        // 工作 1
-        // 工作 2
+        // work 1 //工作 1
+        // work 2 //工作 2
         // ...
     });
 
@@ -40,11 +46,15 @@ Following example uses Websocket to connect to Botnana Contorl, then obtains the
 
 ## Data Event API
 
-Botnana Control 回傳資料的格式為
+Botnana Control's return data format: //Botnana Control 回傳資料的格式為
 
     tag1|value1|tag2|value2...
 
-經過函式 `botnana.handle_response(response)` 處理後，tags 被轉成事件。可使用資料事件 API 處理這些事件。例如：
+After being processed by `botnana.handle_response(response)` function, tags turn into events.
+Data Event API can be used to process these events. e.g.
+
+//經過函式 `botnana.handle_response(response)` 處理後，tags 被轉成事件。
+可使用資料事件 API 處理這些事件。例如：
 
     botnana.on("version", function(version) {
         console.log("version: " + version);
@@ -62,13 +72,14 @@ Botnana Control 回傳資料的格式為
         console.log("dout 1 of slave 2 is " + value);
     });
 
-如果只處理一次事件，使用 `once`。例如：
+To process the event once, use `once`. e.g. //如果只處理一次事件，使用 `once`。例如：
 
     botnana.once("dout.2.1", function (value) {
         console.log("dout 1 of slave 2 is " + value);
     });
 
-也可以使用 times 指定處理事件的次數。例如：
+Or use `times` to specify the number of times to process the event. e.g.
+ //也可以使用 times 指定處理事件的次數。例如：
 
     botnana.times("dout.2.1", function (value) {
         console.log("dout 1 of slave 2 is " + value);
@@ -76,7 +87,7 @@ Botnana Control 回傳資料的格式為
 
 ## Version API
 
-範例：
+e.g.
 
     botnana.on("version", function (version) {
         console.log("version: " + version);        
@@ -87,13 +98,18 @@ Botnana Control 回傳資料的格式為
 
 ## Configuration API
 
-程式可以使用 Configuration API 來處理 configuration 檔。
+The program can use Configuration API to process configuration file.
+ //程式可以使用 Configuration API 來處理 configuration 檔。
 
-### 修改設定參數
+### Altering the parameter configuration //修改設定參數
 
-修改設定參數並不會立刻將設定值儲存至參數設定檔，也不會影響到各裝置目前使用的參數。
+Altering parameter configuration will not immediately save the value to the config file, 
+and will not affect devices in use.
+//修改設定參數並不會立刻將設定值儲存至參數設定檔，
+也不會影響到各裝置目前使用的參數。
 
-範例：修改 configuration 檔中 slave 1 的回歸原點方法。
+e.g. Alter slave 1's homing method within the configuration file. 
+//範例：修改 configuration 檔中 slave 1 的回歸原點方法。
 
     botnana.config.set_slave({
       position: 1,
@@ -101,7 +117,10 @@ Botnana Control 回傳資料的格式為
       value: 33
     });
 
-修改 configuration 內容並不會立刻儲存至設定檔，也不會影響到 EtherCAT slaves 目前使用的參數。
+Edits done to the configuration file will not immediately save, 
+and will not affect current parameter used by EtherCAT.
+//修改 configuration 內容並不會立刻儲存至設定檔，
+也不會影響到 EtherCAT slaves 目前使用的參數。
 
 ### 儲存設定參數
 
