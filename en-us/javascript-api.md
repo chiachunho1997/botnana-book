@@ -72,7 +72,8 @@ Data Event API can be used to process these events. e.g.
         console.log("dout 1 of slave 2 is " + value);
     });
 
-To process the event once, use `once`. e.g. //如果只處理一次事件，使用 `once`。例如：
+To process the event once, use `once`. e.g. 
+//如果只處理一次事件，使用 `once`。例如：
 
     botnana.once("dout.2.1", function (value) {
         console.log("dout 1 of slave 2 is " + value);
@@ -98,12 +99,12 @@ e.g.
 
 ## Configuration API
 
-The program can use Configuration API to process configuration file.
+Configuration API can process the configuration file.
  //程式可以使用 Configuration API 來處理 configuration 檔。
 
 ### Altering the parameter configuration //修改設定參數
 
-Altering parameter configuration will not immediately save the value to the config file, 
+Edits done to the parameter configuration will not immediately save, 
 and will not affect devices in use.
 //修改設定參數並不會立刻將設定值儲存至參數設定檔，
 也不會影響到各裝置目前使用的參數。
@@ -122,25 +123,30 @@ and will not affect current parameter used by EtherCAT.
 //修改 configuration 內容並不會立刻儲存至設定檔，
 也不會影響到 EtherCAT slaves 目前使用的參數。
 
-### 儲存設定參數
+### Saving configured parameter//儲存設定參數
 
-儲存設定參數會立刻將設定值儲存至參數設定檔，但不會影響到各裝置目前使用的參數。
+Saving configured parameter will immediately save to the configuration file, 
+but will not affect parameter in use by devices.
+//儲存設定參數會立刻將設定值儲存至參數設定檔，但不會影響到各裝置目前使用的參數。
 
-關機再開後系統會使用新的設定。
+Rebooting will apply configurations. 
+//關機再開後系統會使用新的設定。
 
-範例：要求儲存 configuration：
+e.g. Asking to save configurations: 
+//範例：要求儲存 configuration：
 
     botnana.config.save();
 
 ## Slave API
 
-### 讀取 Slave 狀態
+### Reading Slave status //讀取 Slave 狀態
 
-函式 `get()` 可以用來取得 Slave 的狀態。例如
+Function `get()` can obtain Slave status. e.g. 
+//函式 `get()` 可以用來取得 Slave 的狀態。例如
 
         botnana.ethercat.slave(1).get();
 
-因為經過函式 `botnana.handle_response(response)` 處理後，回傳的資訊會產生對應的事件，
+After data is processed by `botnana.handle_response(response)` function, //因為經過函式 `botnana.handle_response(response)` 處理後，回傳的資訊會產生對應的事件，
 可以使用 Event API 處理這些回傳的資料。
 
 範例：取得位於第一個 Slave 位置的馬達驅動器回原點的方式

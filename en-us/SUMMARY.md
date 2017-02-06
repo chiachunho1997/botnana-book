@@ -3,6 +3,7 @@
 - [Introduction](./README.md)
 - [Hardware Specification](./hardware.md)
     - [Botnana A2](./botnana-a2.md)
+    - [Botnana Box](./botnana-box.md)
 - [Software Specification](./software.md)
 - [Roadmap](./roadmap.md)
 - [Tutorial](./tutorial.md)

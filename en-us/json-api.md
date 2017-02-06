@@ -140,9 +140,11 @@ Analogue input return data example, using Delta EC8124 as example: //類比輸�
 
 ### Configuring motor drive parameters //設定馬達驅動器參數
 
-As opposed to configuration file's API, this parameter configuration takes effect immediately. //和設定檔的 API 不同，此法設定的參數會立即生效。
+As opposed to configuration file API, this parameter configuration takes effect immediately.
+//和設定檔的 API 不同，此法設定的參數會立即生效。
 
-Motor drive currently provides the following parameters //馬達驅動器部份目前提供以下參數：
+Motor drive currently provides the following parameters:
+//馬達驅動器部份目前提供以下參數：
 
 * `homing_method`
 * `home_offset`
@@ -153,7 +155,8 @@ Motor drive currently provides the following parameters //馬達驅動器部份�
 * `profile_acceleration`
 * `profile_deceleration`
 
-User can use `set` command to alter the parameters //使者用可以使用 set 命令設定這些參數。
+User can use `set` command to alter the parameters.
+ //使者用可以使用 set 命令設定這些參數。
 
     {
       "jsonrpc": "2.0",
@@ -167,7 +170,8 @@ User can use `set` command to alter the parameters //使者用可以使用 set �
 
 ### Clear motor drive alert //清除馬達驅動器異警
 
-e.g. clear the first slave's alert //範例，清除第一個 Slave 的異警：
+e.g. clear the first slave's alert:
+ //範例，清除第一個 Slave 的異警：
 
     {
       "jsonrpc": "2.0",
