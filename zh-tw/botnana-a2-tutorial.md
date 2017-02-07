@@ -5,9 +5,7 @@
 
 使用 micro USB 連結到電腦的 USB port，再以 ssh 登入，
 
-    ssh 192.168.7.2
-
-使用者名稱為 debian
+    ssh debian@192.168.7.2
 
 密碼為 temppwd
 

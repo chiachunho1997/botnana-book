@@ -1,16 +1,21 @@
 # Javascript API
 
-While using nodejs:
+Botnana Control API can be downloaded at [npm registry](https://www.npmjs.com/).
+
+While using nodejs, add the following dependency in your `package.json`.
+
+    botnana: '*'
+
+Then import the package into your program:
 
     var botnana = require("botnana");
 
-`botnana` library can also execute in a browser.
+`botnana` package can also be used in a browser.
 
 ## Examples
 
 Following example uses Websocket to connect to Botnana Control, 
-then obtains the version of Botnana Control 
-//以下範例使用 Websocket 連上 Botnana Control 後取得 Botnana Control 的版本：
+then obtains the version of Botnana Control:
 
     var botnana = require("botnana");
 
@@ -30,8 +35,8 @@ then obtains the version of Botnana Control
 ## Start、Ready and Poll
 
 The program connects to Botnana Control at `ip_address` using `botnana.start(ip_address)`. 
-Ready event means you have connected to Botnana Control and 建立基本資料, and can start processing the function.
-`botnana.start` will automatically start the 輪詢機制, 輪詢 Botnana Control 的回應 every 100 ms.
+Event `ready` means you have connected to Botnana Control and can start processing request.
+`botnana.start` will automatically start polling Botnana Control every 100 ms.
 
 //程式使用 `botnana.start(ip_address)` 連上位於 `ip_address` 的 Botnana Control。Ready 事件代表已經連上並建立基本資料，
 可以開始處理之後函式內的工作。`botnana.start` 同時會起動輪詢機制，每 100 ms 輪詢 Botnana Control 的回應。
