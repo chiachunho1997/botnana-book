@@ -80,9 +80,8 @@ e.g.: Request saving configuration：
 
 Use `get` to obtain all slave info. 
 Use `get_diff` to obtain changes after last time `get` or `get_diff` was used.
- //使用 get_diff 取得自行 上次執行 get 後被 改變的狀態。
 
-If parameter has not changed, return value will be a blank string. //回傳資料為空字串。
+If parameter has not changed, return value will be a blank string.
 
     {
       "jsonrpc": "2.0",

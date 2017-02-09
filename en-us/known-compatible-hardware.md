@@ -7,7 +7,7 @@
 
 ## EtherCAT Slave
 
-Currently Botnana Control supports following EtherCAT Slaves:
+Currently Botnana Control supports the following EtherCAT Slaves:
 
 ### Beckhoff
 
