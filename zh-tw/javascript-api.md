@@ -128,7 +128,7 @@ Botnana Control 回傳資料的格式為
         botnana.ethercat.slave(1).get();
 
 因為經過函式 `botnana.handle_response(response)` 處理後，回傳的資訊會產生對應的事件，
-可以使用 Event API 處理這些回傳的資料。
+可以使用 Event API 處理這些事件。
 
 範例：取得位於第一個 Slave 位置的馬達驅動器回原點的方式
 

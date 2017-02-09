@@ -1,4 +1,4 @@
-# List of known compatible hardware
+# Supported hardware
 
 ## WiFi Adapters
 

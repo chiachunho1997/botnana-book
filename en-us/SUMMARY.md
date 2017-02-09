@@ -14,7 +14,7 @@
 - [Application Programming Interface](programming.md)
     - [JSON API](./json-api.md)
     - [Javascript API](./javascript-api.md)
-- [List of known compatible](./known-compatible-hardware.md)
+- [Supported hardware](./supported-hardware.md)
 
 -------------------------
 

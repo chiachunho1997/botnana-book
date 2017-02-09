@@ -23,7 +23,7 @@ The format of responses returned by Botnana Control:
 
     tag1|value1|tag2|value2...
 
-Note: responses return is not in JSON format.
+Note: responses returned are not in JSON format.
 
 ## Version API
 
@@ -63,7 +63,7 @@ e.g. editing slave 1's homing method:
 ### Saving configuration
 
 Saving configuration will immediately save set value to
-configuration file. But will not affect parameter currently in use.
+configuration file. But will not affect parameters currently in use.
 
 After restart, the system will use the new configuration.
 

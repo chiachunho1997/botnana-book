@@ -98,15 +98,12 @@ e.g.
 
 Configuration API can process the configuration file.
 
-### Altering the configuration //修改設定參數
+### Altering the configuration
 
-Edits done to the configuration will not immediately save, 
+Edits done to the configuration will not be immediately saved, 
 and will not affect devices in use.
-//修改設定參數並不會立刻將設定值儲存至參數設定檔，
-也不會影響到各裝置目前使用的參數。
 
 e.g. Altering slave 1's homing method within the configuration file. 
-//範例：修改 configuration 檔中 slave 1 的回歸原點方法。
 
     botnana.config.set_slave({
       position: 1,
@@ -114,22 +111,17 @@ e.g. Altering slave 1's homing method within the configuration file.
       value: 33
     });
 
-Edits done to the configuration file will not immediately save, 
+Edits done to the configuration file will not be immediately saved, 
 and will not affect current EtherCAT configuration.
-//修改 configuration 內容並不會立刻儲存至設定檔，
-也不會影響到 EtherCAT slaves 目前使用的參數。
 
 ### Saving configuration
 
 Saving configuration will immediately alter the configuration file, 
-but will not affect parameter in use by devices.
-//儲存設定參數會立刻將設定值儲存至參數設定檔，但不會影響到各裝置目前使用的參數。
+but will not affect parameters in use by devices.
 
-Rebooting will apply new configurations. 
-//關機再開後系統會使用新的設定。
+Reboot will apply new configurations. 
 
-e.g. Asking to save configurations: 
-//範例：要求儲存 configuration：
+e.g. Save configurations: 
 
     botnana.config.save();
 
@@ -141,14 +133,11 @@ e.g. Asking to save configurations:
 
         botnana.ethercat.slave(1).get();
 
-After data is processed by function `botnana.handle_response(response)`, 
-response data will create a corresponding event, 
-Event API can be used to process response data.
-//因為經過函式 `botnana.handle_response(response)` 處理後，回傳的資訊會產生對應的事件，
-可以使用 Event API 處理這些回傳的資料。
+After response data is processed by function `botnana.handle_response(response)`, 
+a corrensponding event will be emitted. 
+Event API can be used to process these events.
 
-e.g. Obtaining homing method of position 1 slave
-//範例：取得位於第一個 Slave 位置的馬達驅動器回原點的方式
+e.g. Obtaining homing method of slave at position 1.
 
     botnana.on("homing_method.1", function (homing_method) {
         console.log("result: " + homing_method);
@@ -157,23 +146,23 @@ e.g. Obtaining homing method of position 1 slave
         botnana.ethercat.slave(1).get();
     });
 
-### Configuring drive //設定馬達驅動器參數
+### Configuring drive
 
-Command to configure motor drive: //設定馬達驅動器參數的命令格式為
+Command to configure motor drive:
 
     botnana.ethercat.slave(i).set(tag, value);
 
-e.g. Configuring drive's homing method: 範例：設定馬達回原點的方式
+e.g. Configuring drive's homing method: 
 
     botnana.ethercat.slave(1).set("homgin_method", 33);
 
-### Clearing drive error //清除馬達驅動器異警
+### Clearing drive error
 
     botnana.ethercat.slave(i).reset_fault();
 
-### Configuring and reading IO status //設定及讀取 IO 點狀態
+### Writing and reading IO
 
-e.g. Digital and analogue output/input //範例：數位及類比 IO 的輸出及輸入：
+e.g. Digital and analogue output/input：
 
     botnana.on("dout.1.5", function (value) {
         console.log("dout 5 of slave 1 is " + value);
@@ -196,8 +185,7 @@ e.g. Digital and analogue output/input //範例：數位及類比 IO 的輸出�
         botnana.ethercat.slave(3).get();
     });
 
-e.g. Some slave's Analog IO is required to output致能
-//範例：某些 slave 的 Analog IO 必須要輸出致能：
+e.g. Some slave's Analog IO is required to be enabled.
 
     botnana.ethercat.slave(1).disable_aout(5);
     botnana.ethercat.slave(1).enable_aout(5);
@@ -206,25 +194,24 @@ e.g. Some slave's Analog IO is required to output致能
 
 ## Real-time Programming API
 
-A simple real-time progrma
-//一個最簡單的 real-time 程式：
+A simple real-time program:
 
     var p1 = new botnana.Program("p1");
     p1.deploy();
-    //when finished deploying, execute the program // 當完成部署時執行程式。
+    // When finished deploying, execute the program.
     botnana.once("deployed", function() {
         p1.run();
     })
 
-* `deploy()`: Deploy program to real-time thread. `deployed` even will occur when deployent completed.
-//將程式部署至 real-time thread。當完成部署時，會發出事件 `deployed`。
-* `run()`: Execute deployed program //執行已部署的程式。
+* `deploy()`: Deploy program to real-time thread.
+  Event `deployed` will be emitted when deployment completed.
+* `run()`: Execute deployed program.
 
-Clear all deployed program: //清除所有已部署的程式：
+Clear all deployed programs：
 
     botnana.empty();
 
-e.g. //範例：執行時會先單軸回 Home，然後再移動到位置 30000 的程式：
+e.g. A program that will home the drive, then move the drive to position 30000:
 
     var p2 = new botnana.Program("p2");
     var s1 = p2.ethercat.slave(1);
@@ -235,8 +222,7 @@ e.g. //範例：執行時會先單軸回 Home，然後再移動到位置 30000 �
         p2.run();
     });
 
-e.g. A program that will first move two axes homem then move to position (30000,40000).
-//範例：執行時會先雙軸回 Home，再移動到位置 (30000,40000) 的程式：
+e.g. A program that will first move two drives home then move them to position (30000,40000).
 
     var p3 = new botnana.Program("p3");
     var s1 = p3.ethercat.slave(1);
@@ -256,9 +242,8 @@ e.g. A program that will first move two axes homem then move to position (30000,
         p3.run();
     });
 
-The following program utilized `until_target_reached()` 
+The following program utilizes `until_target_reached()` 
 forcing the second axes to move after the first:
-//以下程式使用 `until_target_reached()` 使得先走完第一軸再走第二軸：
 
     var p4 = new botnana.Program("p4");
     var s1 = p3.ethercat.slave(1);
